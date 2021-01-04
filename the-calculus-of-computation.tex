@@ -1,0 +1,108 @@
+\documentclass[12pt, psamsfonts]{amsart}
+
+%-------Packages---------
+\usepackage{amssymb,amsfonts}
+\usepackage{xcolor,colortbl}
+\usepackage{semantic}
+\usepackage{fullpage}
+\usepackage{units}
+\usepackage{tikz-cd}
+\usepackage{todonotes}
+\usepackage{physics}
+\usepackage[all,arc]{xy}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{theoremref}
+\usepackage{graphicx}
+\usepackage[bookmarks]{hyperref}
+
+\usepackage{amsthm}
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+%--------Theorem Environments--------
+%theoremstyle{plain} --- default
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem*{exer}{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+\DeclareMathOperator{\weight}{weight}
+\DeclareMathOperator{\neighbors}{neighbors}
+\DeclareMathOperator{\priority}{priority}
+\newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
+
+
+\makeatletter
+\makeatother
+\numberwithin{equation}{subsection}
+
+\bibliographystyle{plain}
+
+\setcounter{tocdepth}{3}
+\makeatletter
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+\makeatother
+
+\begin{document}
+
+\title{The Calculus of Computation}
+\author{Hidenori Shinohara}
+
+\maketitle
+
+\section{Chapter 1}
+
+\begin{exer}[1.1]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            Assume that there is a falsifying interpretation $I$.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \models P \land Q \rightarrow P \rightarrow Q$ (assumption)
+                \item % 2
+                    $I \models P \land Q$ (by 1 and semantics of $\rightarrow$)
+                \item % 3
+                    $I \not\models P \rightarrow Q$ (by 1 and semantics of $\rightarrow$)
+                \item % 4
+                    $I \models Q$ (by 2 and semantics of $\land$)
+                \item % 5
+                    $I \not\models Q$ (by 3 and semantics of $\rightarrow$)
+                \item % 6
+                    $I \models \bot$ (4 and 5 are contradictory)
+            \end{enumerate}
+            There is only one branch and it is closed.
+            Thus $F$ is valid.
+    \end{enumerate}
+\end{exer}
+
+\end{document}
