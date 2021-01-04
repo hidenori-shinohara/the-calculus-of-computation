@@ -105,4 +105,41 @@
     \end{enumerate}
 \end{exer}
 
+\begin{exer}[1.2]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            To prove that $\top \Leftrightarrow \neg \bot$, we prove that $\top \leftrightarrow \neg \bot$ is valid.
+            Assume that there is a falsifying interpretation $I$ such that $I \not\models \top \leftrightarrow \neg \bot$.
+            We apply the semantics of $\leftrightarrow$.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \models \top \land \neg(\neg \bot)$ 
+                \item % 2a
+                    $I \models \neg(\neg \bot)$ (by 1a and semantics of $\land$)
+                \item % 3a
+                    $I \not\models \neg \bot$ (by 2a and semantics of $\neg$)
+                \item % 4a
+                    $I \models \bot$ (by 3a and semantics of $\neg$)
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \models \neg \top \land \neg \bot$ 
+                \item % 2b
+                    $I \models \neg \top$ (by 1b and semantics of $\land$)
+                \item % 3b
+                    $I \not\models \top$ (by 2b and semantics of $\neg$)
+                \item % 4b
+                    $I \models \top$ (Under any interpretation, $\top$ has value true)
+                \item % 5b
+                    $I \models \bot$ (3b and 4b are contradictory)
+            \end{enumerate}
+            Thus both branches are closed, and thus $\top \leftrightarrow \neg \bot$ is valid.
+    \end{enumerate}
+\end{exer}
+
 \end{document}
