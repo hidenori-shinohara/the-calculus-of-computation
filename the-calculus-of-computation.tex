@@ -55,9 +55,8 @@
 \newtheorem{warn}[thm]{Warning}
 \newtheorem{sch}[thm]{Scholium}
 
-\DeclareMathOperator{\weight}{weight}
-\DeclareMathOperator{\neighbors}{neighbors}
-\DeclareMathOperator{\priority}{priority}
+\DeclareMathOperator{\En}{\textbf{En}}
+\DeclareMathOperator{\Rep}{\textbf{Rep}}
 \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
 
 
@@ -178,6 +177,43 @@
         \item
             They are already in CNF.
             We have $N \cdot M$ variables and $N \cdot M + K \cdot M \cdot (M - 1) + K \cdot M$ clauses in the encoding above.
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.7]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            $P_{(F)}$ contains 1 term.
+            Each \textbf{En}$(G)$ contains $1, 1, 2 \cdot 2 \cdot 3, 1, 1, 2 \cdot 2 \cdot 3, 3 \cdot 2 \cdot 2$ clauses.
+            Thus the expansion would contain 1728 clauses, which is the product of the numbers of clauses.
+        \item
+            $ $
+            \begin{enumerate}[label=(\roman*)]
+                \item
+                    $2^n$ clauses.
+                \item
+                    $\Rep(F_n) = P_{F_n}$, so it is just one clause.
+                    We have the subformula set $S_{F_n} = \{ Q_1, \cdots, Q_n \} \cup \{ R_1, \cdots, R_n \} \cup \{ Q_i \land R_i \mid 1 \leq i \leq n \}$.
+                    We will consider how many clauses $\En(G)$ has for each $G \in S_{F_n}$.
+                    \begin{itemize}
+                        \item
+                            For each $Q_i$ and $R_i$, we have $\En(Q_i) = \En(R_i) = \top$.
+                            This adds $2n$ clauses to $F'$.
+                        \item
+                            $\En(Q_i \land R_i)$ contains 3 clauses as defined on P.25.
+                            This adds $3n$ clauses to $F'$.
+                    \end{itemize}
+                    Therefore, in total, $F'$ contains $1 + 2n + 3n = 5n + 1$ clauses.
+                    Note that $5n + 1 < 30n + 2$ where $30n + 2$ is the upper bound described on P.26.
+
+                    I am not sure if a subformula can be bigger.
+                    In other words, for instance, should $(Q_1 \land R_1) \lor (Q_2 \land R_2)$ be a subformula of $F_3$?
+                    It seems unnecessary to include such cases for the purpose of CNF conversion, but it seems to be more consistent with the definition of a subformula.
+                \item
+                    When $n \leq 4$, $2^n$ is smaller than $5n + 1$.
+                    For $n \geq 5$, $2^n$ is bigger than $5n + 1$.
+            \end{enumerate}
     \end{enumerate}
 \end{exer}
 
