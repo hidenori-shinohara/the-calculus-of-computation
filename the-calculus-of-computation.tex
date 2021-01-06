@@ -140,6 +140,34 @@
                     $I \models \bot$ (3b and 4b are contradictory)
             \end{enumerate}
             Thus both branches are closed, and thus $\top \leftrightarrow \neg \bot$ is valid.
+        \item
+            We will apply a strategy similar to that of Example 1.13.
+            To prove $\bot \Leftrightarrow \neg \top$, we prove that $F: \bot \leftrightarrow \neg \top$ is valid.
+            Suppose $F$ is not valid; there exists an interpretation $I$ such that $I \not\models F$.
+            There are exactly two branches.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \models \bot \land \neg (\neg \top)$ (by semantics of $\leftrightarrow$)
+                \item % 2a
+                    $I \models \bot$ (by 1a and semantics of $\land$)
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \models (\neg \bot) \land \neg (\neg \top)$ (by semantics of $\leftrightarrow$)
+                \item % 2b
+                    $I \models \neg\top$ (by 1b and semantics of $\land$)
+                \item % 3b
+                    $I \not\models \top$ (by 2b and semantics of $\neg$)
+                \item % 4b
+                    $I \models \top$ (by definition, P.7)
+                \item % 5b
+                    $I \models \bot$ (by 3b and 4b)
+            \end{enumerate}
+            Both of these two branches are closed; $F$ is valid.
     \end{enumerate}
 \end{exer}
 
