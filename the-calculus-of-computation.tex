@@ -55,8 +55,10 @@
 \newtheorem{warn}[thm]{Warning}
 \newtheorem{sch}[thm]{Scholium}
 
-\DeclareMathOperator{\En}{\textbf{En}}
-\DeclareMathOperator{\Rep}{\textbf{Rep}}
+\DeclareMathOperator{\En}{\textsf{En}}
+\DeclareMathOperator{\Rep}{\textsf{Rep}}
+\DeclareMathOperator{\true}{\textsf{true}}
+\DeclareMathOperator{\false}{\textsf{false}}
 \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
 
 
@@ -185,7 +187,7 @@
     \begin{enumerate}[label=(\alph*)]
         \item
             $P_{(F)}$ contains 1 term.
-            Each \textbf{En}$(G)$ contains $1, 1, 2 \cdot 2 \cdot 3, 1, 1, 2 \cdot 2 \cdot 3, 3 \cdot 2 \cdot 2$ clauses.
+            Each $\En(G)$ contains $1, 1, 2 \cdot 2 \cdot 3, 1, 1, 2 \cdot 2 \cdot 3, 3 \cdot 2 \cdot 2$ clauses.
             Thus the expansion would contain 1728 clauses, which is the product of the numbers of clauses.
         \item
             $ $
@@ -214,6 +216,22 @@
                     When $n \leq 4$, $2^n$ is smaller than $5n + 1$.
                     For $n \geq 5$, $2^n$ is bigger than $5n + 1$.
             \end{enumerate}
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.8]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            We will follow the format described in Example 1.30.
+            Branching on $Q$ or $R$ will result in unit clauses; choose $Q$.
+            Then $F\{ Q \mapsto \top \}: (P \lor \neg R) \land (R)$.
+            $P$ appear only positively, so we consider $F\{ Q \mapsto \top, P \mapsto \top \}: R$.
+            Then $R$ appears only positively, so the formula is satisfiable.
+            In particular, $F$ is satisfied by interpretation
+            \begin{align*}
+                I: \{ P \mapsto \true, Q \mapsto \true, R \mapsto \true \}.
+            \end{align*}
     \end{enumerate}
 \end{exer}
 
