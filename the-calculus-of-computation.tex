@@ -59,6 +59,7 @@
 \DeclareMathOperator{\Rep}{\textsf{Rep}}
 \DeclareMathOperator{\true}{\textsf{true}}
 \DeclareMathOperator{\false}{\textsf{false}}
+\DeclareMathOperator{\nand}{\overline{\land}}
 \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
 
 
@@ -180,6 +181,22 @@
     \end{itemize}
 \end{exer}
 
+\begin{exer}[1.4]
+    We claim that $\neg F \Leftrightarrow F \nand F$.
+    To prove that, we prove $\neg F \leftrightarrow F \nand F$ is valid.
+    \begin{center}
+        \begin{tabular}{ |c|c|c||c| }
+            \hline
+            $F$ & $\neg F$ & $F \nand F$ & $\neg F \leftrightarrow F \nand F$\\
+            \hline
+            0 & 1 & 1 & 1 \\
+            \hline
+            1 & 0 & 0 & 1 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{exer}
+
 \begin{exer}[1.5]
     $ $
     \begin{enumerate}[label=(\alph*)]
@@ -198,6 +215,10 @@
             The only connectives in $F'''$ are $\neg, \land$, and $\lor$ and the negations appear only in literals.
             Thus $F'''$ is in NNF.
             Furthermore, $F'''$ is actually in CNF and DNF since it is the disjunction of one conjunction, and it is the conjunction of two clauses.
+        \item
+            $F': (\neg P \lor \neg Q) \land R$ is the NNF of $F$ that can be obtained using the same strategy as above.
+            $F'$ is already in CNF.
+            $F'': (\neg P \land R) \lor (\neg Q \land R)$ is an equivalent formula in DNF.
     \end{enumerate}
 \end{exer}
 
