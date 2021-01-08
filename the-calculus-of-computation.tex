@@ -90,7 +90,7 @@
             Assume that there is a falsifying interpretation $I$.
             \begin{enumerate}[label=\arabic*.]
                 \item % 1
-                    $I \models P \land Q \rightarrow P \rightarrow Q$ (assumption)
+                    $I \not\models P \land Q \rightarrow P \rightarrow Q$ (assumption)
                 \item % 2
                     $I \models P \land Q$ (by 1 and semantics of $\rightarrow$)
                 \item % 3
@@ -104,6 +104,10 @@
             \end{enumerate}
             There is only one branch and it is closed.
             Thus $F$ is valid.
+        \item
+            By constructing a truth table which has $2^2 = 4$ rows, it is easy to see that the interpretation $I: \{ P \mapsto \textsf{false}, Q \mapsto \textsf{true} \}$ is a falsifying interpretation.
+        \item
+            By constructing a truth table which has $2^3 = 8$ rows, it is easy to see that the interpretation $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{false}, R \mapsto \textsf{false} \}$ is a falsifying interpretation.
     \end{enumerate}
 \end{exer}
 
