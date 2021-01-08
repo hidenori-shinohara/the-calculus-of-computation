@@ -223,6 +223,19 @@
             $F': (\neg P \lor \neg Q) \land R$ is the NNF of $F$ that can be obtained using the same strategy as above.
             $F'$ is already in CNF.
             $F'': (\neg P \land R) \lor (\neg Q \land R)$ is an equivalent formula in DNF.
+        \item
+            $F:(Q \land R \rightarrow (P \lor \neg Q)) \land (P \lor R)$.
+            \begin{itemize}
+                \item
+                    $F_1: (\neg (Q \land R) \lor (P \lor \neg Q)) \land (P \lor R)$.
+                \item
+                    $F_2: (\neg Q \lor \neg R \lor P \lor \neg Q) \land (P \lor R)$.
+                \item
+                    $F_3: (\neg Q \land (P \lor R)) \lor (\neg R \land (P \lor R)) \lor (P \land (P \lor R)) \lor (\neg Q \land (P \lor R))$.
+                \item
+                    $F_4: (\neg Q \land P) \lor (\neg Q \land R) \lor (\neg R \land P) \lor (\neg R \land R) \lor (P \land P) \lor (P \land R) \lor (\neg Q \land P) \lor (\neg Q \land R)$.
+            \end{itemize}
+            $F_2$ is in NNF and CNF, and $F_4$ is in DNF.
     \end{enumerate}
 \end{exer}
 
