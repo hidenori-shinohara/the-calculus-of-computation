@@ -294,6 +294,18 @@
             \begin{align*}
                 I: \{ P \mapsto \true, Q \mapsto \true, R \mapsto \true \}.
             \end{align*}
+        \item
+            Branching on $Q$ or $R$ will result in unit clauses.
+            Choose $Q$.
+            \begin{align*}
+                F\{ Q \mapsto \top \}: (\neg P \lor \neg R) \land (R).
+            \end{align*}
+            $P$ appears only negatively.
+            \begin{align*}
+                F\{ P \mapsto \bot, Q \mapsto \top \}: R.
+            \end{align*}
+            $R$ appears only positively.
+            Thus the interpretation $I: \{ P \mapsto \textsf{false}, Q \mapsto \textsf{true}, R \mapsto \textsf{true} \}$ satisfies $F$.
     \end{enumerate}
 \end{exer}
 
