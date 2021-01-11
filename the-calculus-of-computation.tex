@@ -330,6 +330,7 @@
 \end{exer}
 
 \section{Chapter 2}
+
 \begin{exer}[2.1]
     $ $
     \begin{enumerate}[label=(\alph*)]
@@ -344,5 +345,24 @@
     \end{enumerate}
 \end{exer}
 
+\begin{exer}[2.2]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            This exercise is similar to Example 2.13.
+            To show that the given formula is invalid, we find an interpretation $I$ such that
+            \begin{align*}
+                I \models (\forall x, y.\, p(x, y) \rightarrow p(y, x)) \land \exists z.\, \neg p(z, z).
+            \end{align*}
+            Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$.
+            Both $\forall x, y.\, p(x, y) \rightarrow p(y, x)$ and $\exists z.\, \neg p(z, z)$ evaluate to $\textsf{true}$ under $I$ because
+            \begin{itemize}
+                \item
+                    $I \models \forall x, y.\, p(x, y) \rightarrow p(y, x)$ since $I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(x, y) \rightarrow p(y, x)$ for any $\textsf{v}, \textsf{w} \in \{ 0, 1 \}$.
+                \item
+                    $I \models \exists z.\, \neg p(z, z)$ since $I \vartriangleleft \{ z \mapsto 0 \} \models \neg p(z, z)$.
+            \end{itemize}
+    \end{enumerate}
+\end{exer}
 
 \end{document}
