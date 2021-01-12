@@ -385,4 +385,63 @@
     \end{enumerate}
 \end{exer}
 
+\begin{exer}[2.1]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            To show $\neg(\forall x. F) \Leftrightarrow \exists x. \neg F$, we will show the validity of $\neg(\forall x. F) \leftrightarrow \exists x. \neg F$.
+            Suppose that it is not valid.
+            Then there exists an interpretation $I$ such taht $I \not\models \neg(\forall x. F) \leftrightarrow \exists x. \neg F$.
+            By the semantiocs of $\leftrightarrow$, there are two branches.
+            The semantics of $\land, \neg$ appear on P.10, and that of $\forall, \exists$ appear on P.42.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \models \neg(\forall x. F) \land \neg(\exists x. \neg F)$.
+                \item % 2a
+                    $I \models \neg(\forall x. F)$ by 1a and semantics of $\land$.
+                \item % 3a
+                    $I \models \neg(\exists x. \neg F)$ by 1a and semantics of $\land$.
+                \item % 4a
+                    $I \not\models \forall x. F$ by 2a and semantics of $\neg$.
+                \item % 5a
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models F$ by 4a and semantics of $\forall$ for some fresh \textsf{v}.
+                \item % 6a
+                    $I \not \models \exists x. \neg F$ by 3a and semantics of $\neg$.
+                \item % 7a
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models \neg F$ by 6a and semantics of $\exists$ for the same $\textsf{v}$.
+                \item % 8a
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models F$ by 7a and semantics of $\neg$.
+                \item % 9a
+                    $I \models \bot$ by 5a and 8a.
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \models \neg(\neg(\forall x. F)) \land \exists x. \neg F$.
+                \item % 2b
+                    $I \models \exists x. \neg F$ by 1b and semantics of $\land$.
+                \item % 3b
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models \neg F$ by 2b and semantics of $\exists$ for some fresh $\textsf{v} \in D_I$.
+                \item % 4b
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models F$ by 3b and semantics of $\neg$.
+                \item % 5b
+                    $I \models \neg(\neg(\forall x. F))$ by 1b and semantics of $\land$.
+                \item % 6b
+                    $I \not\models \neg(\forall x. F)$ by 5b and semantics of $\neg$.
+                \item % 7b
+                    $I \models \forall x. F$ by 6b and semantics of $\neg$.
+                \item % 8b
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models F$ by 7b and semantics of $\forall$ for the same \textsf{v}.
+                \item % 9b
+                    $I \models \bot$ by 4b and 8b.
+            \end{enumerate}
+
+            Every branch of a semantic argument proof of $I \not\models F$ closes, so $F$ is valid by Theorem 2.30.
+    \end{enumerate}
+\end{exer}
+
+
 \end{document}
