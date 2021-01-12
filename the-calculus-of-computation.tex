@@ -362,6 +362,26 @@
                 \item
                     $I \models \exists z.\, \neg p(z, z)$ since $I \vartriangleleft \{ z \mapsto 0 \} \models \neg p(z, z)$.
             \end{itemize}
+        \item
+            To show that the given formula is invalid, we need to find an interpretation $I$ such that
+            \begin{align*}
+                I \models \exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z).
+            \end{align*}
+            Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \models \exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z)$.
+                \item % 2
+                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z)$ by 1 and the semantics of $\exists$.
+                \item % 3
+                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models p(x, y)$ by 2 and the semantics of $\land$.
+                \item % 4
+                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models p(y, x)$ by 2 and the semantics of $\land$.
+                \item % 5
+                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models \exists z.\, \neg p(z, z)$ by 2 and the semantics of $\land$.
+                \item % 6
+                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1, z \mapsto 0 \} \models \neg p(z, z)$ by 5 and the semantics of $\exists$.
+            \end{enumerate}
     \end{enumerate}
 \end{exer}
 
