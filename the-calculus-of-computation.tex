@@ -387,7 +387,7 @@
             \begin{align*}
                 I \models \neg((\exists x.\, p(x)) \rightarrow (\forall y.\, p(y))).
             \end{align*}
-            It suffices to show that its negation normal form is satisfied by $I$.
+            It suffices to show that the negation normal form is satisfied by $I$.
             \begin{itemize}
                 \item
                     $\neg((\exists x.\, p(x)) \rightarrow (\forall y.\, p(y)))$.
@@ -398,13 +398,17 @@
                 \item
                     $(\exists x.\, p(x)) \land (\exists y.\, \neg p(y))$.
             \end{itemize}
-            In other words, it suffices to show
+            Then we have
             \begin{align*}
-                I \models (\exists x. p(x)) \land (\exists y. \neg p(y)).
+                &I \models \neg((\exists x.\, p(x)) \rightarrow (\forall y.\, p(y))) \\
+                    &\text{ iff } I \models (\exists x. p(x)) \land (\exists y. \neg p(y)) & \text{(NNF)} \\
+                    &\text{ iff } I \models (\exists x. p(x)) \text{ and } (\exists y. \neg p(y)) & \text{(P.40)} \\
+                    &\text{ iff } I \models (\exists x. p(x)) \text{ and } (\exists y. \neg p(y)) & \text{(P.40)} \\
+                    &\text{ iff } I \vartriangleleft \{ x \mapsto \textsf{v} \} \models p(x) \text{ and } I \vartriangleleft \{ y \mapsto \textsf{w} \} \models \neg p(y) \text{ for some \textsf{v}, \textsf{w} } & \text{(P.41)}
             \end{align*}
-            By P.40, this is equivalent to $I \models (\exists x. p(x))$ and $I \models (\exists y. \neg p(y))$.
             Let $D_I = \{ 0, 1 \}$ and $p_I = \{ 0 \}$.
-            By P.41, $I \vartriangleleft \{ x \mapsto 0 \} \models p(x)$ and $I \vartriangleleft \{ y \mapsto 1 \} \models \neg p(y)$.
+            Then the last statement is true since we can set \textsf{v} = 0 and \textsf{w} = 1.
+            In other words, such $I$ is a falsifying interpretation.
     \end{enumerate}
 \end{exer}
 
