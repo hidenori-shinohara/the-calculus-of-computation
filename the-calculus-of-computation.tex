@@ -382,16 +382,39 @@
                 \item % 6
                     $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1, z \mapsto 0 \} \models \neg p(z, z)$ by 5 and the semantics of $\exists$.
             \end{enumerate}
+        \item
+            To show that the given formula is invalid, we need to find an interpretation $I$ such that
+            \begin{align*}
+                I \models \neg((\exists x.\, p(x)) \rightarrow (\forall y.\, p(y))).
+            \end{align*}
+            It suffices to show that its negation normal form is satisfied by $I$.
+            \begin{itemize}
+                \item
+                    $\neg((\exists x.\, p(x)) \rightarrow (\forall y.\, p(y)))$.
+                \item
+                    $\neg(\neg(\exists x.\, p(x)) \lor (\forall y.\, p(y)))$.
+                \item
+                    $(\exists x.\, p(x)) \land \neg(\forall y.\, p(y))$.
+                \item
+                    $(\exists x.\, p(x)) \land (\exists y.\, \neg p(y))$.
+            \end{itemize}
+            In other words, it suffices to show
+            \begin{align*}
+                I \models (\exists x. p(x)) \land (\exists y. \neg p(y)).
+            \end{align*}
+            By P.40, this is equivalent to $I \models (\exists x. p(x))$ and $I \models (\exists y. \neg p(y))$.
+            Let $D_I = \{ 0, 1 \}$ and $p_I = \{ 0 \}$.
+            By P.41, $I \vartriangleleft \{ x \mapsto 0 \} \models p(x)$ and $I \vartriangleleft \{ y \mapsto 1 \} \models \neg p(y)$.
     \end{enumerate}
 \end{exer}
 
-\begin{exer}[2.1]
+\begin{exer}[2.3]
     $ $
     \begin{enumerate}[label=(\alph*)]
         \item
             To show $\neg(\forall x.\, F) \Leftrightarrow \exists x.\, \neg F$, we will show the validity of $\neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
             Suppose that it is not valid.
-            Then there exists an interpretation $I$ such taht $I \not\models \neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
+            Then there exists an interpretation $I$ such that $I \not\models \neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
             By the semantiocs of $\leftrightarrow$, there are two branches.
             The semantics of $\land, \neg$ appear on P.10, and that of $\forall, \exists$ appear on P.42.
 
