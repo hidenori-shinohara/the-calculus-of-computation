@@ -389,26 +389,26 @@
     $ $
     \begin{enumerate}[label=(\alph*)]
         \item
-            To show $\neg(\forall x. F) \Leftrightarrow \exists x. \neg F$, we will show the validity of $\neg(\forall x. F) \leftrightarrow \exists x. \neg F$.
+            To show $\neg(\forall x.\, F) \Leftrightarrow \exists x.\, \neg F$, we will show the validity of $\neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
             Suppose that it is not valid.
-            Then there exists an interpretation $I$ such taht $I \not\models \neg(\forall x. F) \leftrightarrow \exists x. \neg F$.
+            Then there exists an interpretation $I$ such taht $I \not\models \neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
             By the semantiocs of $\leftrightarrow$, there are two branches.
             The semantics of $\land, \neg$ appear on P.10, and that of $\forall, \exists$ appear on P.42.
 
             The first branch is:
             \begin{enumerate}[label=\arabic*a.]
                 \item % 1a
-                    $I \models \neg(\forall x. F) \land \neg(\exists x. \neg F)$.
+                    $I \models \neg(\forall x.\, F) \land \neg(\exists x.\, \neg F)$.
                 \item % 2a
-                    $I \models \neg(\forall x. F)$ by 1a and semantics of $\land$.
+                    $I \models \neg(\forall x.\, F)$ by 1a and semantics of $\land$.
                 \item % 3a
-                    $I \models \neg(\exists x. \neg F)$ by 1a and semantics of $\land$.
+                    $I \models \neg(\exists x.\, \neg F)$ by 1a and semantics of $\land$.
                 \item % 4a
-                    $I \not\models \forall x. F$ by 2a and semantics of $\neg$.
+                    $I \not\models \forall x.\, F$ by 2a and semantics of $\neg$.
                 \item % 5a
                     $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models F$ by 4a and semantics of $\forall$ for some fresh \textsf{v}.
                 \item % 6a
-                    $I \not \models \exists x. \neg F$ by 3a and semantics of $\neg$.
+                    $I \not \models \exists x.\, \neg F$ by 3a and semantics of $\neg$.
                 \item % 7a
                     $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models \neg F$ by 6a and semantics of $\exists$ for the same $\textsf{v}$.
                 \item % 8a
@@ -420,19 +420,19 @@
             The second branch is:
             \begin{enumerate}[label=\arabic*b.]
                 \item % 1b
-                    $I \models \neg(\neg(\forall x. F)) \land \exists x. \neg F$.
+                    $I \models \neg(\neg(\forall x.\, F)) \land \exists x.\, \neg F$.
                 \item % 2b
-                    $I \models \exists x. \neg F$ by 1b and semantics of $\land$.
+                    $I \models \exists x.\, \neg F$ by 1b and semantics of $\land$.
                 \item % 3b
                     $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models \neg F$ by 2b and semantics of $\exists$ for some fresh $\textsf{v} \in D_I$.
                 \item % 4b
                     $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models F$ by 3b and semantics of $\neg$.
                 \item % 5b
-                    $I \models \neg(\neg(\forall x. F))$ by 1b and semantics of $\land$.
+                    $I \models \neg(\neg(\forall x.\, F))$ by 1b and semantics of $\land$.
                 \item % 6b
-                    $I \not\models \neg(\forall x. F)$ by 5b and semantics of $\neg$.
+                    $I \not\models \neg(\forall x.\, F)$ by 5b and semantics of $\neg$.
                 \item % 7b
-                    $I \models \forall x. F$ by 6b and semantics of $\neg$.
+                    $I \models \forall x.\, F$ by 6b and semantics of $\neg$.
                 \item % 8b
                     $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models F$ by 7b and semantics of $\forall$ for the same \textsf{v}.
                 \item % 9b
@@ -443,5 +443,27 @@
     \end{enumerate}
 \end{exer}
 
+\begin{exer}[2.4]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            \begin{itemize}
+                \item
+                    $(\forall x.\, \exists y.\, p(x, y)) \rightarrow \forall x.\, p(x, x)$.
+                \item
+                    $\neg (\forall x.\, \exists y.\, p(x, y)) \lor \forall x.\, p(x, x)$.
+                \item
+                    $(\exists x.\, \neg(\exists y.\, p(x, y))) \lor \forall x.\, p(x, x)$.
+                \item
+                    $(\exists x.\, \forall y.\, \neg p(x, y)) \lor \forall x.\, p(x, x)$.
+                \item
+                    $(\exists x.\, \forall y.\, \neg p(x, y)) \lor \forall w.\, p(w, w)$.
+                \item
+                    $\neg p(x, y)) \lor p(w, w)$.
+                \item
+                    $\exists x.\, \forall y.\, \forall w.\, \neg p(x, y)) \lor p(w, w)$.
+            \end{itemize}
+    \end{enumerate}
+\end{exer}
 
 \end{document}
