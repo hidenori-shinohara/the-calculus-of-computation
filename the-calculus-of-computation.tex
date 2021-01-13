@@ -352,17 +352,37 @@
             This exercise is similar to Example 2.13.
             To show that the given formula is invalid, we find an interpretation $I$ such that
             \begin{align*}
-                I \models (\forall x, y.\, p(x, y) \rightarrow p(y, x)) \land \exists z.\, \neg p(z, z).
+                I \models \neg((\forall x, y.\, p(x, y) \rightarrow p(y, x)) \rightarrow \forall z. p(z, z)).
             \end{align*}
-            Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$.
-            Both $\forall x, y.\, p(x, y) \rightarrow p(y, x)$ and $\exists z.\, \neg p(z, z)$ evaluate to $\textsf{true}$ under $I$ because
+            We will first find the NNF as following:
             \begin{itemize}
                 \item
-                    $I \models \forall x, y.\, p(x, y) \rightarrow p(y, x)$ since $I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(x, y) \rightarrow p(y, x)$ for any $\textsf{v}, \textsf{w} \in \{ 0, 1 \}$.
+                    $\neg((\forall x, y.\, p(x, y) \rightarrow p(y, x)) \rightarrow \forall z. p(z, z))$.
                 \item
-                    $I \models \exists z.\, \neg p(z, z)$ since $I \vartriangleleft \{ z \mapsto 0 \} \models \neg p(z, z)$.
+                    $\neg(\neg(\forall x, y . p(x, y) \rightarrow p(y, x)) \lor \forall z. p(z, z))$.
+                \item
+                    $(\forall x, y . p(x, y) \rightarrow p(y, x)) \land \neg \forall z. p(z, z)$.
+                \item
+                    $(\forall x, y . \neg p(x, y) \lor p(y, x)) \land \exists z. \neg p(z, z)$.
             \end{itemize}
+            Using the inductive steps described on P.40 and P.41,
+            \begin{align*}
+                &I \models \neg((\forall x, y.\, p(x, y) \rightarrow p(y, x)) \rightarrow \forall z.\, p(z, z)) \\
+                    &\quad \text{ iff } I \models (\forall x, y.\, \neg p(x, y) \lor p(y, x)) \land \exists z.\, \neg p(z, z) \\
+                    &\quad \text{ iff } I \models \forall x, y.\, \neg p(x, y) \lor p(y, x) \text{ and } I \models \exists z.\, \neg p(z, z) \\
+                    &\quad \text{ iff } I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models \neg p(x, y) \lor p(y, x)
+                                            \text{ and } I \vartriangleleft \{ z \mapsto \textsf{u} \} \models \neg p(z, z) \\
+                    &\quad \text{ iff } \big[I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \not\models p(x, y)
+                                    \text{ or } I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(y, x)\big]  \\
+                                    &\quad \quad \quad \text{ and } I \vartriangleleft \{ z \mapsto \textsf{u} \} \models \neg p(z, z).
+            \end{align*}
+            where each line with \textsf{v}, \textsf{w} should be followed by ``for all \textsf{v}, \textsf{w} in $D_I$ and for some \textsf{u} in $D_I$."
+            Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$, then it is easy to see that the last line is true.
+            In other words, $I$ is indeed a falsifying interpretation, and thus the given formula is invalid.
         \item
+            \todo[inline,caption={}]{
+                Make this solution more rigorous.
+            }
             To show that the given formula is invalid, we need to find an interpretation $I$ such that
             \begin{align*}
                 I \models \exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z).
