@@ -385,23 +385,42 @@
             }
             To show that the given formula is invalid, we need to find an interpretation $I$ such that
             \begin{align*}
-                I \models \exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z).
+                I \models \neg\forall x, y.\, p(x, y) \rightarrow p(y, x) \rightarrow \forall z.\, p(z, z).
             \end{align*}
-            Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$.
-            \begin{enumerate}[label=\arabic*.]
-                \item % 1
-                    $I \models \exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z)$.
-                \item % 2
-                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z)$ by 1 and the semantics of $\exists$.
-                \item % 3
-                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models p(x, y)$ by 2 and the semantics of $\land$.
-                \item % 4
-                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models p(y, x)$ by 2 and the semantics of $\land$.
-                \item % 5
-                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1 \} \models \exists z.\, \neg p(z, z)$ by 2 and the semantics of $\land$.
-                \item % 6
-                    $I \vartriangleleft \{ x \mapsto 0, y \mapsto 1, z \mapsto 0 \} \models \neg p(z, z)$ by 5 and the semantics of $\exists$.
-            \end{enumerate}
+            We will find the NNF as following:
+            \begin{itemize}
+                \item
+                    $\neg\forall x, y.\, p(x, y) \rightarrow p(y, x) \rightarrow \forall z.\, p(z, z)$.
+                \item
+                    $\neg\forall x, y.\, p(x, y) \rightarrow (p(y, x) \rightarrow \forall z.\, p(z, z))$.
+                \item
+                    $\neg\forall x, y.\, p(x, y) \rightarrow (\neg p(y, x) \lor \forall z.\, p(z, z))$.
+                \item
+                    $\neg\forall x, y.\, \neg p(x, y) \lor (\neg p(y, x) \lor \forall z.\, p(z, z))$.
+                \item
+                    $\exists x, y.\, p(x, y) \land \neg(\neg p(y, x) \lor \forall z.\, p(z, z))$.
+                \item
+                    $\exists x, y.\, p(x, y) \land p(y, x) \land \neg\forall z.\, p(z, z)$.
+                \item
+                    $\exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z)$.
+            \end{itemize}
+            Using the inductive steps described on P.40 and P.41,
+            \begin{align*}
+                &\quad I \models \neg\forall x, y.\, p(x, y) \rightarrow p(y, x) \rightarrow \forall z.\, p(z, z) \\
+                    &\text{iff}\quad I \models \exists x, y.\, p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z) \\
+                    &\text{iff}\quad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(x, y) \land p(y, x) \land \exists z.\, \neg p(z, z) \\
+                    &\qquad\text{for some \textsf{v}, \textsf{w} in $D_I$} \\
+                    &\text{iff}\quad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(x, y) \text{ and} \\
+                    &\qquad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(y, x) \text{ and} \\
+                    &\qquad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models \exists z.\, \neg p(z, z) \\
+                    &\qquad\text{for some \textsf{v}, \textsf{w} in $D_I$} \\
+                    &\text{iff}\quad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(x, y) \text{ and} \\
+                    &\qquad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(y, x) \text{ and} \\
+                    &\qquad I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w}, z \mapsto \textsf{u} \} \not\models p(z, z) \\
+                    &\qquad\text{for some \textsf{v}, \textsf{w}, \textsf{u} in $D_I$} \\
+            \end{align*}
+            Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$, then the last line is clearly true for we can set $\textsf{v} = 0, \textsf{w} = 1, \textsf{u} = 0$.
+            Therefore, $I$ is a falsifying interpretation, and thus the original formula is invalid.
         \item
             To show that the given formula is invalid, we need to find an interpretation $I$ such that
             \begin{align*}
