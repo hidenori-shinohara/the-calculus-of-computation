@@ -469,7 +469,8 @@
 \begin{exer}[2.3]
     $ $
     \begin{enumerate}[label=(\alph*)]
-        \item
+        \item % a
+            This is similar to Example 2.21.
             To show $\neg(\forall x.\, F) \Leftrightarrow \exists x.\, \neg F$, we will show the validity of $\neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
             Suppose that it is not valid.
             Then there exists an interpretation $I$ such that $I \not\models \neg(\forall x.\, F) \leftrightarrow \exists x.\, \neg F$.
@@ -521,6 +522,54 @@
             \end{enumerate}
 
             Every branch of a semantic argument proof of $I \not\models F$ closes, so $F$ is valid by Theorem 2.30.
+        \item % b
+            To show $\neg (\exists x.\, F) \Leftrightarrow \forall x.\, \neg F$, it suffices to show the validity of $\neg(\exists x.\, F) \leftrightarrow \forall x.\, \neg F$.
+            Suppose otherwise.
+            Then there exists an interpretation $I$ such that $I \not\models \neg(\exists x.\, F) \leftrightarrow (\forall x.\, \neg F)$.
+            We will use the semantics of $\land, \neg, \leftrightarrow$ on P.10 and 11, and that of $\forall, \exists$ on P.42.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \models \neg(\exists x.\, F) \land \neg(\forall x.\, \neg F)$.
+                \item % 2a
+                    $I \models \neg(\exists x.\, F)$ by 1a and $\land$.
+                \item % 3a
+                    $I \models \neg(\forall x.\, \neg F)$ by 1a and $\land$.
+                \item % 4a
+                    $I \not\models \forall x.\, \neg F$ by 3a and $\neg$.
+                \item % 5a
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models \neg F$ by 4a and $\forall$ for a fresh $\textsf{v} \in D_I$.
+                \item % 6a
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models F$ by 5a and $\neg$.
+                \item % 7a
+                    $I \not\models \exists x.\, F$ by 2a and $\neg$.
+                \item % 8a
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models F$ by 7a and $\exists$ for the same \textsf{v}.
+                \item % 9a
+                    $I \models \bot$ by 6a and 8a.
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \models \neg(\neg(\exists x. F)) \land \forall x. \neg F$.
+                \item % 2b
+                    $I \models \neg(\neg(\exists x. F))$ by 1b and $\land$.
+                \item % 3b
+                    $I \models \forall x. \neg F$ by 1b and $\land$.
+                \item % 4b
+                    $I \models \exists x. F$ by applying the semantics of $\neg$ twice to 2b.
+                \item % 5b
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models F$ by 4b and $\exists$ for a fresh \textsf{v}.
+                \item % 6b
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models \neg F$ by 3b and $\forall$ for the same \textsf{v}.
+                \item % 7b
+                    $I \vartriangleleft \{ x \mapsto \textsf{v} \} \not\models F$ by 6b and $\neg$.
+                \item % 8b
+                    $I \models \bot$ by 5b and 7b.
+            \end{enumerate}
+
     \end{enumerate}
 \end{exer}
 
