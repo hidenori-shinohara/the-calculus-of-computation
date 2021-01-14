@@ -348,7 +348,7 @@
 \begin{exer}[2.2]
     $ $
     \begin{enumerate}[label=(\alph*)]
-        \item
+        \item % (a)
             This exercise is similar to Example 2.13.
             To show that the given formula is invalid, we find an interpretation $I$ such that
             \begin{align*}
@@ -379,10 +379,7 @@
             where each line with \textsf{v}, \textsf{w} should be followed by ``for all \textsf{v}, \textsf{w} in $D_I$ and for some \textsf{u} in $D_I$."
             Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$, then it is easy to see that the last line is true.
             In other words, $I$ is indeed a falsifying interpretation, and thus the given formula is invalid.
-        \item
-            \todo[inline,caption={}]{
-                Make this solution more rigorous.
-            }
+        \item % (b)
             To show that the given formula is invalid, we need to find an interpretation $I$ such that
             \begin{align*}
                 I \models \neg\forall x, y.\, p(x, y) \rightarrow p(y, x) \rightarrow \forall z.\, p(z, z).
@@ -421,7 +418,7 @@
             \end{align*}
             Choose $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$, then the last line is clearly true for we can set $\textsf{v} = 0, \textsf{w} = 1, \textsf{u} = 0$.
             Therefore, $I$ is a falsifying interpretation, and thus the original formula is invalid.
-        \item
+        \item % (c)
             To show that the given formula is invalid, we need to find an interpretation $I$ such that
             \begin{align*}
                 I \models \neg((\exists x.\, p(x)) \rightarrow (\forall y.\, p(y))).
@@ -448,6 +445,24 @@
             Let $D_I = \{ 0, 1 \}$ and $p_I = \{ 0 \}$.
             Then the last statement is true since we can set \textsf{v} = 0 and \textsf{w} = 1.
             In other words, such $I$ is a falsifying interpretation.
+        \item % (d)
+            To prove the validity of $F: (\forall x.\, p(x)) \rightarrow (\exists y.\, p(y))$, we will assume that it is not.
+            Then there must exist a falsifying interpretation.
+            \begin{enumerate}[label=\arabic*.]
+               \item % 1
+                   $I \not\models (\forall x.\, p(x)) \rightarrow (\exists y.\, p(y))$.
+               \item % 2
+                   $I \models \forall x.\, p(x)$ by 1 and semantics of $\rightarrow$ on P.10.
+               \item % 3
+                   $I \not\models \exists y.\, p(y)$ by 1 and semantics of $\rightarrow$ on P.10.
+               \item % 4
+                   $I \vartriangleleft \{ x \mapsto \textsf{v} \} \models p(x)$ by 2 and semantics of $\forall$ on P.42 for any $\textsf{v} \in D_I$.
+               \item % 5
+                   $I \vartriangleleft \{ y \mapsto \textsf{v} \} \not\models p(y)$ by 3 and semantics of $\exists$ on P.42 for the same $\textsf{v}$ as above.
+               \item % 6
+                   $I \models \bot$, contradiction as shown on P.43.
+           \end{enumerate}
+           Since every branch of a semantic argument proof of $I \not\models F$ closes, $F$ is valid by Theorem 2.30
     \end{enumerate}
 \end{exer}
 
