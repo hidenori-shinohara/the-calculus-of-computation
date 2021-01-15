@@ -463,6 +463,19 @@
                    $I \models \bot$, contradiction as shown on P.43.
            \end{enumerate}
            Since every branch of a semantic argument proof of $I \not\models F$ closes, $F$ is valid by Theorem 2.30
+        \item % (e)
+            In order to show that $\exists x, y.\, (p(x, y) \rightarrow (p(y, x) \rightarrow \forall z.\, p(z, z)))$ is invalid,
+            we need to find an interpretation $I$ such that
+            \begin{align*}
+                I \not\models \exists x, y.\, (p(x, y) \rightarrow (p(y, x) \rightarrow \forall z.\, p(z, z))).
+            \end{align*}
+            We claim that $D_I = \{ 0, 1 \}$ and $p_I = \{ (0, 1), (1, 0) \}$ define such an interpretation.
+            By the semantics of $\exists$ on P.42, the above expression is equivalent to $I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \} \models p(x, y) \rightarrow (p(y, x) \rightarrow \forall z.\, p(z, z))$ for any \textsf{v}, \textsf{w} in $D_I$.
+            This is true if and only if $J \models p(x, y)$ and $J \not\models p(y, x) \rightarrow \forall z.\, p(z, z)$ where $J$ is the interpretation $I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \}$.
+            $J \not\models p(y, x) \rightarrow \forall z.\, p(z, z)$ is true if and only if $J \models p(y, x)$ and $J \not\models \forall z.\, p(z, z)$.
+            Finally, $J \not\models \forall z.\, p(z, z)$ if and only if $J \vartriangleleft \{ z \mapsto \textsf{u} \} \not\models p(z, z)$ for a fresh \textsf{u} in $D_I$.
+            It is easy to see that each expression evaluates to true for \textsf{v}, \textsf{w} and \textsf{u}.
+            Therefore, $I$ is a falsifying interpretation.
     \end{enumerate}
 \end{exer}
 
@@ -576,7 +589,7 @@
 \begin{exer}[2.4]
     $ $
     \begin{enumerate}[label=(\alph*)]
-        \item
+        \item % a
             \begin{itemize}
                 \item
                     $(\forall x.\, \exists y.\, p(x, y)) \rightarrow \forall x.\, p(x, x)$.
@@ -592,6 +605,21 @@
                     $\neg p(x, y)) \lor p(w, w)$.
                 \item
                     $\exists x.\, \forall y.\, \forall w.\, \neg p(x, y)) \lor p(w, w)$.
+            \end{itemize}
+        \item % b
+            \begin{itemize}
+                \item
+                    $\exists z.\, (\forall x.\, \exists y.\, p(x, y)) \rightarrow \forall x.\, p(x, z)$.
+                \item
+                    $\exists z.\, \neg(\forall x.\, \exists y.\, p(x, y)) \lor \forall x.\, p(x, z)$.
+                \item
+                    $\exists z.\, (\exists x.\, \forall y.\, \neg p(x, y)) \lor \forall x.\, p(x, z)$.
+                \item
+                    $\exists z.\, (\exists x.\, \forall y.\, \neg p(x, y)) \lor \forall w.\, p(w, z)$.
+                \item
+                    $\neg p(x, y) \lor p(w, z)$.
+                \item
+                    $\exists z.\, \exists x.\, \forall y.\, \forall w.\, \neg p(x, y) \lor p(w, z)$.
             \end{itemize}
     \end{enumerate}
 \end{exer}
