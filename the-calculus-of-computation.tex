@@ -464,6 +464,10 @@
            \end{enumerate}
            Since every branch of a semantic argument proof of $I \not\models F$ closes, $F$ is valid by Theorem 2.30
         \item % (e)
+            \todo[inline,caption={}]{
+                Update this solution.
+                I'm not sure that I can use the semantics of $\exists$ in this way.
+            }
             In order to show that $\exists x, y.\, (p(x, y) \rightarrow (p(y, x) \rightarrow \forall z.\, p(z, z)))$ is invalid,
             we need to find an interpretation $I$ such that
             \begin{align*}
@@ -621,6 +625,79 @@
                 \item
                     $\exists z.\, \exists x.\, \forall y.\, \forall w.\, \neg p(x, y) \lor p(w, z)$.
             \end{itemize}
+    \end{enumerate}
+\end{exer}
+
+\section{Chapter 3}
+\begin{exer}[3.1]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            First, as mentioned on P.42, it technically does not make sense to discuss validity of an open formula.
+            The convention is to take the universal closure of the formula.
+            Thus we will prove that the formula $F: \forall x, y.\, f(x, y) = f(y, x) \rightarrow f(a, y) = f(y, a)$ is invalid.
+            We will do so by finding a falsifying $T_{\textsf{E}}$-interpretation.
+            In other words, we need to show that
+            \begin{itemize}
+                \item
+                    We have an interpretation $I$ which satisfies all the axioms of $T_{\textsf{E}}$, and
+                \item
+                    $I \not\models F$.
+            \end{itemize}
+            Let an interpretation $I: \{ D_I, \alpha_I \}$ be defined such that
+            \begin{itemize}
+                \item
+                    $D_I = \{ \circ, \bullet \}$ and the equaltiy among $\circ$ and $\bullet$ is defined in the most trivial way.
+                    (e.g., $\circ = \circ$ and $\circ \ne \bullet$.)
+                \item
+                    $\alpha_I[a] = \circ$.
+                \item
+                    $\alpha_I[f]$ is the left projection map.
+                    In other words,
+                    \begin{itemize}
+                        \item
+                            $\alpha_I[f](\circ, \circ) = \circ$,
+                        \item
+                            $\alpha_I[f](\circ, \bullet) = \circ$,
+                        \item
+                            $\alpha_I[f](\bullet, \circ) = \bullet$,
+                        \item
+                            $\alpha_I[f](\bullet, \bullet) = \bullet$.
+                    \end{itemize}
+            \end{itemize}
+            Then $I$ is a $T_{\textsf{E}}$-interpetation for it satisfies all the axioms of $T_{\textsf{E}}$ on P.71.
+            For instance, $I$ satisfies reflexivity since
+            \begin{align*}
+                &I \models \forall x.\, x = x \\
+                &\text{iff}\quad I \vartriangleleft \{ x \mapsto \textsf{v} \} \models x = x \text{ for any $\textsf{v} \in D_I$ (P.41)}
+            \end{align*}
+            which we can easily see as \textsf{true} by examining the two cases where \textsf{v} is $\circ$ and $\bullet$.
+            It is easy to show that $I$ satisfies the other four axioms (symmetry, transitivity, function congruence, predicate congruence) in a similar way.
+
+            Now that we have established that $I$ is indeed a $T_{\textsf{E}}$-interpretation, we claim that it is a falsifying interpretation of the given formula.
+            In other words, we want to show that $I \not\models F$.
+            \begin{align*}
+                &I \not\models \forall x, y.\, f(x, y) = f(y, x) \rightarrow f(a, y) = f(y, a) \\
+                &\text{iff}\quad I \models \neg(\forall x, y.\, f(x, y) = f(y, x) \rightarrow f(a, y) = f(y, a)) \quad\text{(P.40)} \\
+                &\text{iff}\quad I \models \exists x, y.\, f(x, y) = f(y, x) \land \neg(f(a, y) = f(y, a)) \quad\text{(NNF)} \\
+                &\text{iff}\quad \text{for some \textsf{v}, \textsf{w}, } I_{\textsf{vw}} \models f(x, y) = f(y, x) \land \neg(f(a, y) = f(y, a)) \quad\text{(P.41)} \\
+                &\text{iff}\quad \text{for some \textsf{v}, \textsf{w}, } I_{\textsf{vw}} \models f(x, y) = f(y, x) \text{ and } I_{\textsf{vw}} \not\models f(a, y) = f(y, a) \quad\text{(P.40)}
+            \end{align*}
+            where $I_{\textsf{vw}}$ is used as a shorthand for $I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \}$.
+            The last line is true because when we set $\textsf{v} = \textsf{w} = \bullet$, we have
+            \begin{align*}
+                & I_{\bullet\bullet} \models f(x, y) = f(y, x) \\
+                &\text{iff}\quad \alpha_{I_{\bullet\bullet}}[f](\alpha_{I_{\bullet\bullet}}[x], \alpha_{I_{\bullet\bullet}}[y]) = \alpha_{I_{\bullet\bullet}}[f](\alpha_{I_{\bullet\bullet}}[y], \alpha_{I_{\bullet\bullet}}[x]) \\
+                &\text{iff}\quad \alpha_{I}[f](\bullet, \bullet) = \alpha_{I}[f](\bullet, \bullet) \\
+                &\text{iff}\quad \bullet = \bullet,
+            \end{align*}
+            and
+            \begin{align*}
+                & I_{\bullet\bullet} \not\models f(a, y) = f(y, a) \\
+                &\text{iff}\quad \alpha_{I_{\bullet\bullet}}[f](\alpha_{I_{\bullet\bullet}}[a], \alpha_{I_{\bullet\bullet}}[y]) = \alpha_{I_{\bullet\bullet}}[f](\alpha_{I_{\bullet\bullet}}[y], \alpha_{I_{\bullet\bullet}}[a]) \text{ is \textsf{false}}\\
+                &\text{iff}\quad \alpha_{I}[f](\circ, \bullet) = \alpha_{I}[f](\bullet, \circ) \text{ is \textsf{false}}\\
+                &\text{iff}\quad \circ = \bullet \text{ is \textsf{false}}.
+            \end{align*}
     \end{enumerate}
 \end{exer}
 
