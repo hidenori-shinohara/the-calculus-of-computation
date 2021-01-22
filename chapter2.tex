@@ -133,8 +133,10 @@
            Since every branch of a semantic argument proof of $I \not\models F$ closes, $F$ is valid by Theorem 2.30
         \item % (e)
             \todo[inline,caption={}]{
-                Update this solution.
-                I'm not sure that I can use the semantics of $\exists$ in this way.
+                The following solution is wrong.
+                The formula is actually valid because
+                If $p(x, y)$ is false for some $x, y$, then those $x, y$ can be chosen.
+                If $p$ is always true, we are done.
             }
             In order to show that $\exists x, y.\, (p(x, y) \rightarrow (p(y, x) \rightarrow \forall z.\, p(z, z)))$ is invalid,
             we need to find an interpretation $I$ such that
