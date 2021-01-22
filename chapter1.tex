@@ -1,0 +1,301 @@
+
+\begin{exer}[1.1]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            Assume that there is a falsifying interpretation $I$.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models P \land Q \rightarrow P \rightarrow Q$ (assumption)
+                \item % 2
+                    $I \models P \land Q$ (by 1 and semantics of $\rightarrow$)
+                \item % 3
+                    $I \not\models P \rightarrow Q$ (by 1 and semantics of $\rightarrow$)
+                \item % 4
+                    $I \models Q$ (by 2 and semantics of $\land$)
+                \item % 5
+                    $I \not\models Q$ (by 3 and semantics of $\rightarrow$)
+                \item % 6
+                    $I \models \bot$ (4 and 5 are contradictory)
+            \end{enumerate}
+            There is only one branch and it is closed.
+            P.13 states that it is a proof of the validity of $F$ if every branch is closed.
+            Thus $F$ is valid.
+        \item
+            By the relative precedence of the logical connectives mentioned on P.5, the given formula is the same as
+            \begin{align*}
+                F: (P \rightarrow Q) \lor (P \land \neg Q).
+            \end{align*}
+            Suppose that there is a falsifying interpretation $I$.
+            We will use the semantics mentioned on P.10 and P.11.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models (P \rightarrow Q) \lor (P \land \neg Q)$ (assumption)
+                \item % 2
+                    $I \not\models P \rightarrow Q$ (by 1 and semantics of $\lor$)
+                \item % 3
+                    $I \not\models P \land \neg Q$ (by 1 and semantics of $\lor$)
+                \item % 4
+                    $I \models P$ (by 2 and semantics of $\rightarrow$)
+                \item % 5
+                    $I \not\models Q$ (by 2 and semantics of $\rightarrow$)
+            \end{enumerate}
+            By 3 and the semantics of $\land$, we obtain two branches.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \not\models P$ (by 3 and semantics of $\land$)
+                \item % 2a
+                    $I \models \bot$ (by 4 and 1a)
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \not\models \neg Q$ (by 3 and semantics of $\land$)
+                \item % 2b
+                    $I \models Q$ (by 1b and $\neg$)
+                \item % 3b
+                    $I \models \bot$ (by 5 and 2b)
+            \end{enumerate}
+
+            Every branch is closed, so this is a proof of validity of $F$.
+        \item
+            We claim that the interpretation $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{false}, R \mapsto \textsf{false} \}$ is a falsifying interpretation.
+            We will use the inductive definition on P.7 and P.8.
+            \begin{align*}
+                &I \not\models (P \rightarrow Q \rightarrow R) \rightarrow P \rightarrow R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \rightarrow R \text{ and } I \not\models P \rightarrow R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \rightarrow R \text{ and } I \models P \text{ and } I \not\models R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \rightarrow R \text{ and } I[P] = \textsf{true} \text{ and } I[R] = \textsf{false} \\
+                    &\text{iff}\quad \text{if } I \models P \text{, then } I \models Q \rightarrow R \\
+                    &\text{iff}\quad \text{if } I[P] = \textsf{true} \text{, then } I \models Q \rightarrow R \\
+                    &\text{iff}\quad I \models Q \rightarrow R \\
+                    &\text{iff}\quad \text{if } I \models Q \text{, then } I \models R \\
+                    &\text{iff}\quad \text{if } I[Q] = \textsf{true} \text{, then } I \models R \\
+                    &\text{iff}\quad I \models R \\
+                    &\text{iff}\quad I[R] = \textsf{true}.
+            \end{align*}
+            Therefore, $I$ is indeed a falsifying interpretation of the given formula.
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.2]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            To prove that $\top \Leftrightarrow \neg \bot$, we prove that $\top \leftrightarrow \neg \bot$ is valid.
+            Assume that there is a falsifying interpretation $I$ such that $I \not\models \top \leftrightarrow \neg \bot$.
+            We apply the semantics of $\leftrightarrow$.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \models \top \land \neg(\neg \bot)$ 
+                \item % 2a
+                    $I \models \neg(\neg \bot)$ (by 1a and semantics of $\land$)
+                \item % 3a
+                    $I \not\models \neg \bot$ (by 2a and semantics of $\neg$)
+                \item % 4a
+                    $I \models \bot$ (by 3a and semantics of $\neg$)
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \models \neg \top \land \neg \bot$ 
+                \item % 2b
+                    $I \models \neg \top$ (by 1b and semantics of $\land$)
+                \item % 3b
+                    $I \not\models \top$ (by 2b and semantics of $\neg$)
+                \item % 4b
+                    $I \models \top$ (Under any interpretation, $\top$ has value true)
+                \item % 5b
+                    $I \models \bot$ (3b and 4b are contradictory)
+            \end{enumerate}
+            Thus both branches are closed, and thus $\top \leftrightarrow \neg \bot$ is valid.
+        \item
+            We will apply a strategy similar to that of Example 1.13.
+            To prove $\bot \Leftrightarrow \neg \top$, we prove that $F: \bot \leftrightarrow \neg \top$ is valid.
+            Suppose $F$ is not valid; there exists an interpretation $I$ such that $I \not\models F$.
+            There are exactly two branches.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \models \bot \land \neg (\neg \top)$ (by semantics of $\leftrightarrow$)
+                \item % 2a
+                    $I \models \bot$ (by 1a and semantics of $\land$)
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \models (\neg \bot) \land \neg (\neg \top)$ (by semantics of $\leftrightarrow$)
+                \item % 2b
+                    $I \models \neg\top$ (by 1b and semantics of $\land$)
+                \item % 3b
+                    $I \not\models \top$ (by 2b and semantics of $\neg$)
+                \item % 4b
+                    $I \models \top$ (by definition, P.7)
+                \item % 5b
+                    $I \models \bot$ (by 3b and 4b)
+            \end{enumerate}
+            Both of these two branches are closed; $F$ is valid.
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.3]
+    $ $
+    \begin{itemize}
+        \item
+            $\bot$ is equivalent to $\neg \top$.
+            In other words, $\bot \Leftrightarrow \neg \top$ and that is proved in Exercise 1.2(b).
+    \end{itemize}
+\end{exer}
+
+\begin{exer}[1.4]
+    $ $
+    \begin{itemize}
+        \item
+            We claim that $\neg F \Leftrightarrow F \nand F$.
+            To prove that, we prove $\neg F \leftrightarrow F \nand F$ is valid.
+            \begin{center}
+                \begin{tabular}{ |c|c|c||c| }
+                    \hline
+                    $F$ & $\neg F$ & $F \nand F$ & $\neg F \leftrightarrow F \nand F$\\
+                    \hline
+                    0 & 1 & 1 & 1 \\
+                    \hline
+                    1 & 0 & 0 & 1 \\
+                    \hline
+                \end{tabular}
+            \end{center}
+        \item
+            $F_1 \lor F_2 \Leftrightarrow (F_1 \nand F_1) \nand (F_2 \nand F_2)$.
+            This can be shown easily using the truth table with $2^2 = 4$ rows.
+    \end{itemize}
+\end{exer}
+
+\begin{exer}[1.5]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            By using the list of template equivalences on P.19, we can obtain the negation normal form of the original formula as following:
+            \begin{itemize}
+                \item
+                    $F: \neg (P \rightarrow Q)$.
+                \item
+                    $F': \neg (\neg P \lor Q)$.
+                \item
+                    $F'': \neg (\neg P) \land \neg Q$.
+                \item
+                    $F''': P \land \neg Q$.
+            \end{itemize}
+            The only connectives in $F'''$ are $\neg, \land$, and $\lor$ and the negations appear only in literals.
+            Thus $F'''$ is in NNF.
+            Furthermore, $F'''$ is actually in CNF and DNF since it is the disjunction of one conjunction, and it is the conjunction of two clauses.
+        \item
+            $F': (\neg P \lor \neg Q) \land R$ is the NNF of $F$ that can be obtained using the same strategy as above.
+            $F'$ is already in CNF.
+            $F'': (\neg P \land R) \lor (\neg Q \land R)$ is an equivalent formula in DNF.
+        \item
+            $F:(Q \land R \rightarrow (P \lor \neg Q)) \land (P \lor R)$.
+            \begin{itemize}
+                \item
+                    $F_1: (\neg (Q \land R) \lor (P \lor \neg Q)) \land (P \lor R)$.
+                \item
+                    $F_2: (\neg Q \lor \neg R \lor P \lor \neg Q) \land (P \lor R)$.
+                \item
+                    $F_3: (\neg Q \land (P \lor R)) \lor (\neg R \land (P \lor R)) \lor (P \land (P \lor R)) \lor (\neg Q \land (P \lor R))$.
+                \item
+                    $F_4: (\neg Q \land P) \lor (\neg Q \land R) \lor (\neg R \land P) \lor (\neg R \land R) \lor (P \land P) \lor (P \land R) \lor (\neg Q \land P) \lor (\neg Q \land R)$.
+            \end{itemize}
+            $F_2$ is in NNF and CNF, and $F_4$ is in DNF.
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.6]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            $\bigwedge\limits_{v \in V} \bigvee\limits_{c \in C} P^c_v$.
+        \item
+            $\bigwedge\limits_{(v, w) \in E} \bigvee\limits_{c_1 \ne c_2 \in C} (\neg P_v^{c_1} \vee \neg P^{c_2}_w)$.
+        \item
+            $\bigwedge\limits_{(v, w) \in E} \bigvee\limits_{c \in C} (\neg P_v^c \vee \neg P^c_w)$.
+        \item
+            No clue.
+            The problem statement seems too ambiguous.
+        \item
+            They are already in CNF.
+            We have $N \cdot M$ variables and $N \cdot M + K \cdot M \cdot (M - 1) + K \cdot M$ clauses in the encoding above.
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.7]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            $P_{(F)}$ contains 1 term.
+            Each $\En(G)$ contains $1, 1, 2 \cdot 2 \cdot 3, 1, 1, 2 \cdot 2 \cdot 3, 3 \cdot 2 \cdot 2$ clauses.
+            Thus the expansion would contain 1728 clauses, which is the product of the numbers of clauses.
+        \item
+            $ $
+            \begin{enumerate}[label=(\roman*)]
+                \item
+                    $2^n$ clauses.
+                \item
+                    $\Rep(F_n) = P_{F_n}$, so it is just one clause.
+                    We have the subformula set $S_{F_n} = \{ Q_1, \cdots, Q_n \} \cup \{ R_1, \cdots, R_n \} \cup \{ Q_i \land R_i \mid 1 \leq i \leq n \}$.
+                    We will consider how many clauses $\En(G)$ has for each $G \in S_{F_n}$.
+                    \begin{itemize}
+                        \item
+                            For each $Q_i$ and $R_i$, we have $\En(Q_i) = \En(R_i) = \top$.
+                            This adds $2n$ clauses to $F'$.
+                        \item
+                            $\En(Q_i \land R_i)$ contains 3 clauses as defined on P.25.
+                            This adds $3n$ clauses to $F'$.
+                    \end{itemize}
+                    Therefore, in total, $F'$ contains $1 + 2n + 3n = 5n + 1$ clauses.
+                    Note that $5n + 1 < 30n + 2$ where $30n + 2$ is the upper bound described on P.26.
+
+                    I am not sure if a subformula can be bigger.
+                    In other words, for instance, should $(Q_1 \land R_1) \lor (Q_2 \land R_2)$ be a subformula of $F_3$?
+                    It seems unnecessary to include such cases for the purpose of CNF conversion, but it seems to be more consistent with the definition of a subformula.
+                \item
+                    When $n \leq 4$, $2^n$ is smaller than $5n + 1$.
+                    For $n \geq 5$, $2^n$ is bigger than $5n + 1$.
+            \end{enumerate}
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[1.8]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            We will follow the format described in Example 1.30.
+            Branching on $Q$ or $R$ will result in unit clauses; choose $Q$.
+            Then $F\{ Q \mapsto \top \}: (P \lor \neg R) \land (R)$.
+            $P$ appear only positively, so we consider $F\{ Q \mapsto \top, P \mapsto \top \}: R$.
+            Then $R$ appears only positively, so the formula is satisfiable.
+            In particular, $F$ is satisfied by interpretation
+            \begin{align*}
+                I: \{ P \mapsto \true, Q \mapsto \true, R \mapsto \true \}.
+            \end{align*}
+        \item
+            Branching on $Q$ or $R$ will result in unit clauses.
+            Choose $Q$.
+            \begin{align*}
+                F\{ Q \mapsto \top \}: (\neg P \lor \neg R) \land (R).
+            \end{align*}
+            $P$ appears only negatively.
+            \begin{align*}
+                F\{ P \mapsto \bot, Q \mapsto \top \}: R.
+            \end{align*}
+            $R$ appears only positively.
+            Thus the interpretation $I: \{ P \mapsto \textsf{false}, Q \mapsto \textsf{true}, R \mapsto \textsf{true} \}$ satisfies $F$.
+    \end{enumerate}
+\end{exer}
+
