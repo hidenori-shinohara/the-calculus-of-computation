@@ -146,7 +146,22 @@
 
             Every branch is closed, so this is a proof of validity of $F$.
         \item
-            By constructing a truth table which has $2^3 = 8$ rows, it is easy to see that the interpretation $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{false}, R \mapsto \textsf{false} \}$ is a falsifying interpretation.
+            We claim that the interpretation $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{false}, R \mapsto \textsf{false} \}$ is a falsifying interpretation.
+            We will use the inductive definition on P.7 and P.8.
+            \begin{align*}
+                &I \not\models (P \rightarrow Q \rightarrow R) \rightarrow P \rightarrow R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \rightarrow R \text{ and } I \not\models P \rightarrow R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \rightarrow R \text{ and } I \models P \text{ and } I \not\models R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \rightarrow R \text{ and } I[P] = \textsf{true} \text{ and } I[R] = \textsf{false} \\
+                    &\text{iff}\quad \text{if } I \models P \text{, then } I \models Q \rightarrow R \\
+                    &\text{iff}\quad \text{if } I[P] = \textsf{true} \text{, then } I \models Q \rightarrow R \\
+                    &\text{iff}\quad I \models Q \rightarrow R \\
+                    &\text{iff}\quad \text{if } I \models Q \text{, then } I \models R \\
+                    &\text{iff}\quad \text{if } I[Q] = \textsf{true} \text{, then } I \models R \\
+                    &\text{iff}\quad I \models R \\
+                    &\text{iff}\quad I[R] = \textsf{true}.
+            \end{align*}
+            Therefore, $I$ is indeed a falsifying interpretation of the given formula.
     \end{enumerate}
 \end{exer}
 
