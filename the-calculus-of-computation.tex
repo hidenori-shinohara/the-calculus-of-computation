@@ -103,9 +103,48 @@
                     $I \models \bot$ (4 and 5 are contradictory)
             \end{enumerate}
             There is only one branch and it is closed.
+            P.13 states that it is a proof of the validity of $F$ if every branch is closed.
             Thus $F$ is valid.
         \item
-            By constructing a truth table which has $2^2 = 4$ rows, it is easy to see that the interpretation $I: \{ P \mapsto \textsf{false}, Q \mapsto \textsf{true} \}$ is a falsifying interpretation.
+            By the relative precedence of the logical connectives mentioned on P.5, the given formula is the same as
+            \begin{align*}
+                F: (P \rightarrow Q) \lor (P \land \neg Q).
+            \end{align*}
+            Suppose that there is a falsifying interpretation $I$.
+            We will use the semantics mentioned on P.10 and P.11.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models (P \rightarrow Q) \lor (P \land \neg Q)$ (assumption)
+                \item % 2
+                    $I \not\models P \rightarrow Q$ (by 1 and semantics of $\lor$)
+                \item % 3
+                    $I \not\models P \land \neg Q$ (by 1 and semantics of $\lor$)
+                \item % 4
+                    $I \models P$ (by 2 and semantics of $\rightarrow$)
+                \item % 5
+                    $I \not\models Q$ (by 2 and semantics of $\rightarrow$)
+            \end{enumerate}
+            By 3 and the semantics of $\land$, we obtain two branches.
+
+            The first branch is:
+            \begin{enumerate}[label=\arabic*a.]
+                \item % 1a
+                    $I \not\models P$ (by 3 and semantics of $\land$)
+                \item % 2a
+                    $I \models \bot$ (by 4 and 1a)
+            \end{enumerate}
+
+            The second branch is:
+            \begin{enumerate}[label=\arabic*b.]
+                \item % 1b
+                    $I \not\models \neg Q$ (by 3 and semantics of $\land$)
+                \item % 2b
+                    $I \models Q$ (by 1b and $\neg$)
+                \item % 3b
+                    $I \models \bot$ (by 5 and 2b)
+            \end{enumerate}
+
+            Every branch is closed, so this is a proof of validity of $F$.
         \item
             By constructing a truth table which has $2^3 = 8$ rows, it is easy to see that the interpretation $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{false}, R \mapsto \textsf{false} \}$ is a falsifying interpretation.
     \end{enumerate}
