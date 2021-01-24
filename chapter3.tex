@@ -85,21 +85,51 @@
                 \item % 7
                     $I_{\textsf{vw}} \models f(y) = x$ (by 3 and $\land$ on P.10)
                 \item % 8
-                    $I_{\textsf{vw}} \models g(f(y)) = g(x)$ (by 7 and \textsf{function congruence})
+                    $I_{\textsf{vw}} \models g(f(y)) = g(x)$ (by 7 and \textsf{(function congruence)})
                 \item % 9
-                    $I_{\textsf{vw}} \models f(g(f(y))) = f(g(x))$ (by 8 and \textsf{function congruence})
+                    $I_{\textsf{vw}} \models f(g(f(y))) = f(g(x))$ (by 8 and \textsf{(function congruence)})
                 \item % 10
-                    $I_{\textsf{vw}} \models x = f(g(f(y)))$ (by 6 and \textsf{symmetry})
+                    $I_{\textsf{vw}} \models x = f(g(f(y)))$ (by 6 and \textsf{(symmetry)})
                 \item % 11
-                    $I_{\textsf{vw}} \models x = f(g(x))$ (by 9, 10 and \textsf{transitivity})
+                    $I_{\textsf{vw}} \models x = f(g(x))$ (by 9, 10 and \textsf{(transitivity)})
                 \item % 12
-                    $I_{\textsf{vw}} \models x = g(f(x))$ (by 5, 11 and \textsf{transitivity})
+                    $I_{\textsf{vw}} \models x = g(f(x))$ (by 5, 11 and \textsf{(transitivity)})
                 \item % 13
-                    $I_{\textsf{vw}} \models g(f(x)) = x$ (by 12 and \textsf{symmetry})
+                    $I_{\textsf{vw}} \models g(f(x)) = x$ (by 12 and \textsf{(symmetry)})
                 \item % 14
                     $I_{\textsf{vw}} \models \bot$ (by 4 and 13)
             \end{enumerate}
             Since the only one branch closes, the given formula is valid.
             Note that we are able to apply \textsf{(function congruence)}, \textsf{(symmetry)}, and \textsf{(transitivity)} because $I$ is a $T_{\textsf{E}}$-interpretation.
+        \item
+            Suppose $F$ is invalid.
+            Then there must exist a falsifying $T_{\textsf{E}}$-interpretation $I$.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models f(f(f(a))) = f(f(a)) \land f(f(f(f(a)))) = a \rightarrow f(a) = a$.
+                \item % 2
+                    $I \models f(f(f(a))) = f(f(a)) \land f(f(f(f(a)))) = a$ (by 1 and $\rightarrow$)
+                \item % 3
+                    $I \not\models f(a) = a$ (by 1 and $\rightarrow$)
+                \item % 4
+                    $I \models f(f(f(a))) = f(f(a))$ (by 2 and $\land$)
+                \item % 5
+                    $I \models f(f(f(f(a)))) = a$ (by 2 and $\land$)
+                \item % 6
+                    $I \models f(f(a)) = f(f(f(a)))$ (by 4 and \textsf{(symmetry)})
+                \item % 7
+                    $I \models f(f(f(a))) = f(f(f(f(a))))$ (by 6 and \textsf{(function congruence)})
+                \item % 8
+                    $I \models f(f(f(a))) = a$ (by 5, 7, and \textsf{(transitivity)})
+                \item % 9
+                    $I \models f(f(f(f(a)))) = f(a)$ (by 8 and \textsf{(function congruence)})
+                \item % 10
+                    $I \models f(a) = f(f(f(f(a))))$ (by 9 and \textsf{(symmetry)})
+                \item % 11
+                    $I \models f(a) = a$ (by 5, 10 and \textsf{(transitivity)})
+                \item % 12
+                    $I \models \bot$ (by 3 and 11)
+            \end{enumerate}
+            Thus the given formula is valid.
     \end{enumerate}
 \end{exer}
