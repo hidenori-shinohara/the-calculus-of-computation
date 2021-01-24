@@ -67,5 +67,37 @@
                 &\text{iff}\quad \alpha_{I}[f](\circ, \bullet) = \alpha_{I}[f](\bullet, \circ) \text{ is \textsf{false}}\\
                 &\text{iff}\quad \circ = \bullet \text{ is \textsf{false}}.
             \end{align*}
+        \item
+            Suppose $F$ is invalid. Then there must exist a falsifying $T_{\textsf{E}}$-interpretation $I$.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models \forall x, y.\, f(g(x)) = g(f(x)) \land f(g(f(y))) = x \land f(y) = x \rightarrow g(f(x)) = x$.
+                \item % 2
+                    $I_{\textsf{vw}} \not\models f(g(x)) = g(f(x)) \land f(g(f(y))) = x \land f(y) = x \rightarrow g(f(x)) = x$ for fresh \textsf{v, w} where $I_{\textsf{vw}}: I \vartriangleleft \{ x \mapsto \textsf{v}, y \mapsto \textsf{w} \}$ (by 1 and $\forall$ on P.62)
+                \item % 3
+                    $I_{\textsf{vw}} \models f(g(x)) = g(f(x)) \land f(g(f(y))) = x \land f(y) = x$ (by 2 and $\rightarrow$ on P.10)
+                \item % 4
+                    $I_{\textsf{vw}} \not\models g(f(x)) = x$ (by 2 and $\rightarrow$ on P.10)
+                \item % 5
+                    $I_{\textsf{vw}} \models f(g(x)) = g(f(x))$ (by 3 and $\land$ on P.10)
+                \item % 6
+                    $I_{\textsf{vw}} \models f(g(f(y))) = x$ (by 3 and $\land$ on P.10)
+                \item % 7
+                    $I_{\textsf{vw}} \models f(y) = x$ (by 3 and $\land$ on P.10)
+                \item % 8
+                    $I_{\textsf{vw}} \models g(f(y)) = g(x)$ (by 7 and \textsf{function congruence})
+                \item % 9
+                    $I_{\textsf{vw}} \models f(g(f(y))) = f(g(x))$ (by 8 and \textsf{function congruence})
+                \item % 10
+                    $I_{\textsf{vw}} \models x = f(g(f(y)))$ (by 6 and \textsf{symmetry})
+                \item % 11
+                    $I_{\textsf{vw}} \models x = f(g(x))$ (by 9, 10 and \textsf{transitivity})
+                \item % 12
+                    $I_{\textsf{vw}} \models x = g(f(x))$ (by 5, 11 and \textsf{transitivity})
+                \item % 13
+                    $I_{\textsf{vw}} \models g(f(x)) = x$ (by 12 and \textsf{symmetry})
+                \item % 14
+                    $I_{\textsf{vw}} \models \bot$ (by 4 and 13)
+            \end{enumerate}
     \end{enumerate}
 \end{exer}
