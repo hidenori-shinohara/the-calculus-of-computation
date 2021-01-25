@@ -131,5 +131,27 @@
                     $I \models \bot$ (by 3 and 11)
             \end{enumerate}
             Thus the given formula is valid.
+        \item
+            We claim that $F$ is invalid by identifying a falsifying $T_{\textsf{E}}$-interpretation.
+            Let $I: (\alpha_I, D_I)$ be defined such that
+            \begin{itemize}
+                \item
+                    $D_I = \{ 0, 1 \}$.
+                \item
+                    $\alpha_I[f](0) = 1, \alpha_I[f](1) = 0$.
+                \item
+                    $a \mapsto 0$.
+            \end{itemize}
+            Then $I$ is a $T_{\textsf{E}}$-interpretation as it satisfies all the axioms of $T_{\textsf{E}}$.
+            For instance, it satisfies function congruence since $I \models \forall x, y.\, x = y \implies f(x) = f(y)$.
+            \begin{align*}
+                &I \not\models f(f(f(a))) = f(a) \land f(f(a)) = a \rightarrow f(a) = a \\
+                &\text{iff}\quad I \models f(f(f(a))) = f(a) \land f(f(a)) = a \land \neg(f(a) = a) \quad\text{(NNF)}\\
+                &\text{iff}\quad I \models f(f(f(a))) = f(a) \text{ and } I \models f(f(a)) = a \text{ and } I \models \neg(f(a) = a) \quad\text{(by $\land$)}
+            \end{align*}
+            where each of the three expressions in the last line is true.
+            For instance, $\alpha_{I}[f](\alpha_I[f](\alpha_I[a])) = \alpha_I[a]$ if and only if $0 = 0$.
+            The other two expressions can be evaluated in the same way.
+            Therefore, $I$ is indeed a falsifying $T_{\textsf{E}}$-interpretation of $F$, and thus $F$ is invalid.
     \end{enumerate}
 \end{exer}
