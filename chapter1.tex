@@ -248,7 +248,7 @@
                     $2^n$ clauses.
                 \item
                     $\Rep(F_n) = P_{F_n}$, so it is just one clause.
-                    We have the subformula set $S_{F_n} = \{ Q_1, \cdots, Q_n \} \cup \{ R_1, \cdots, R_n \} \cup \{ Q_i \land R_i \mid 1 \leq i \leq n \}$.
+                    We have the subformula set $S_{F_n} = \{ Q_1, \cdots, Q_n \} \cup \{ R_1, \cdots, R_n \} \cup \{ Q_i \land R_i \mid 1 \leq i \leq n \} \cup \{ (\bigvee_{i=1}^{k-1} Q_i \land R_i) \lor (Q_k \land R_k) \mid k = 2, \cdots, n \}$.
                     We will consider how many clauses $\En(G)$ has for each $G \in S_{F_n}$.
                     \begin{itemize}
                         \item
@@ -257,19 +257,15 @@
                         \item
                             $\En(Q_i \land R_i)$ contains 3 clauses as defined on P.25.
                             This adds $3n$ clauses to $F'$.
+                        \item
+                            Each $\En((\bigvee_{i=1}^{k-1} Q_i \land R_i) \lor (Q_k \land R_k))$ contains 3 clauses as defined on P.25.
+                            This adds $3(n - 1)$ clauses to $F'$.
                     \end{itemize}
-                    Therefore, in total, $F'$ contains $1 + 2n + 3n = 5n + 1$ clauses.
-                    Note that $5n + 1 < 30n + 2$ where $30n + 2$ is the upper bound described on P.26.
-
-                    I am not sure if a subformula can be bigger.
-                    In other words, for instance, should $(Q_1 \land R_1) \lor (Q_2 \land R_2)$ be a subformula of $F_3$?
-                    It seems unnecessary to include such cases for the purpose of CNF conversion, but it seems to be more consistent with the definition of a subformula.
-                    \todo[inline,caption={}]{
-                        This solution seems wrong, and I should update this.
-                    }
+                    Therefore, in total, $F'$ contains $1 + 2n + 3n + 3(n - 1) = 8n - 2$ clauses.
+                    Note that $8n + 2 < 30n + 2$ where $30n + 2$ is the upper bound described on P.26.
                 \item
-                    When $n \leq 4$, $2^n$ is smaller than $5n + 1$.
-                    For $n \geq 5$, $2^n$ is bigger than $5n + 1$.
+                    When $n \leq 5$, $2^n$ is smaller than $8n - 2$.
+                    For $n \geq 6$, $2^n$ is bigger than $8n - 2$.
             \end{enumerate}
     \end{enumerate}
 \end{exer}
