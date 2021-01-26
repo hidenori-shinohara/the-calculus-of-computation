@@ -171,5 +171,22 @@
             \end{align*}
             The last line is equivalent to asking the existence of \textsf{a, b, c} such that $\textsf{a} \leq \textsf{b}$, $\textsf{c} = \textsf{a} + 1$, and $\textsf{c} > \textsf{b}$.
             It is true because, for instance, the tuple $(\textsf{a}, \textsf{b}, \textsf{c}) = (0, 0, 1)$ satisfies all the three expressions simultaneously.
+        \item
+            We claim that the given formula is valid.
+            Suppose otherwise.
+            Let $I$ be a falsifying $T_{\mathbb{Z}}$-interpretation.
+            \begin{enumerate}[label=\arabic*.]
+                \item
+                    $I \not\models \forall x, y, z.\, x \leq y \land z = x - 1 \rightarrow z \leq y$.
+                \item
+                    $I \models \exists x, y, z.\, x \leq y \land z = x - 1 \land \neg(z \leq y)$.
+                \item
+                    $I_{\textsf{abc}} \models x \leq y \land z = x - 1 \land \neg(z \leq y)$ where $I_{\textsf{abc}}: I \vartriangleleft \{ x \mapsto \textsf{a}, y \mapsto \textsf{b}, z \mapsto \textsf{c} \}$ for some $\textsf{a, b, c} \in D_I$.
+                \item
+                    $I_{\textsf{abc}} \models x \leq y$, $I_{\textsf{abc}} \models z = x - 1$ and $I_{\textsf{abc}} \models \neg(z \leq y)$ where $I_{\textsf{abc}}: I \vartriangleleft \{ x \mapsto \textsf{a}, y \mapsto \textsf{b}, z \mapsto \textsf{c} \}$ for some $\textsf{a, b, c} \in D_I$.
+            \end{enumerate}
+            The last line is equivalent to the existence of $\textsf{a, b, c}$ such that $\textsf{a} \leq \textsf{b}$, $\textsf{c} = \textsf{a} - 1$, and $\textsf{c} > \textsf{b}$.
+            Since $\textsf{c} = \textsf{a} - 1 < \textsf{a} \leq \textsf{b} < \textsf{c}$ would imply that $\textsf{c} < \textsf{c}$, there is no such tuple.
+            Thus the original formula must be valid.
     \end{enumerate}
 \end{exer}
