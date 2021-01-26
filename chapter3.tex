@@ -155,3 +155,21 @@
             Therefore, $I$ is indeed a falsifying $T_{\textsf{E}}$-interpretation of $F$, and thus $F$ is invalid.
     \end{enumerate}
 \end{exer}
+
+\begin{exer}[3.2]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            We claim that any $T_{\mathbb{Z}}$-interpretation is a counterexample.
+            Let $I$ be a $T_{\mathbb{Z}}$-interpretation.
+            Given $\textsf{a, b, c} \in D_I$, let $I_{\textsf{abc}}: I \vartriangleleft \{ x \mapsto \textsf{a}, y \mapsto \textsf{b}, z \mapsto \textsf{c} \}$ for convenience.
+            \begin{align*}
+                &I \not\models \forall x, y, z.\, x \leq y \land z = x + 1 \rightarrow z \leq y \\
+                &\text{iff}\quad I \models \exists x, y, z.\, x \leq y \land z = x + 1 \land \neg(z \leq y) \\
+                &\text{iff}\quad \text{For some \textsf{a, b, c}, } I_{\textsf{abc}} \models x \leq y \land z = x + 1 \land \neg(z \leq y) \\
+                &\text{iff}\quad \text{For some \textsf{a, b, c}, } I_{\textsf{abc}} \models x \leq y \text{ and } I_{\textsf{abc}} \models z = x + 1 \text{ and } I_{\textsf{abc}} \models \neg(z \leq y).
+            \end{align*}
+            The last line is equivalent to asking the existence of \textsf{a, b, c} such that $\textsf{a} \leq \textsf{b}$, $\textsf{c} = \textsf{a} + 1$, and $\textsf{c} > \textsf{b}$.
+            It is true because, for instance, the tuple $(\textsf{a}, \textsf{b}, \textsf{c}) = (0, 0, 1)$ satisfies all the three expressions simultaneously.
+    \end{enumerate}
+\end{exer}
