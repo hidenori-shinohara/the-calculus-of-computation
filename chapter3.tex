@@ -207,3 +207,21 @@
             Therefore, the original formula is valid.
     \end{enumerate}
 \end{exer}
+
+\begin{exer}[3.3]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            We claim that any $T_{\mathbb{Q}}$-interpretation is a falsifying interpretation.
+            Let $I$ be a $T_{\mathbb{Q}}$-interpretation.
+            \begin{align*}
+                & I \not\models \forall x.\, 3x = 2 \rightarrow x \leq 0 \\
+                & \text{iff}\quad I \models \exists x.\, 3x = 2 \land \neg(x \leq 0) \\
+                & \text{iff}\quad I \vartriangleleft \{ x \mapsto \textsf{a} \} \models 3x = 2 \land \neg(x \leq 0) \text{ for some $\textsf{a} \in \mathbb{Q}$}\\
+                & \text{iff}\quad \text{There exists a rational number $a$ such that $3a = 2$ and $a \geq 0$}
+            \end{align*}
+            where the last line is clearly true since $3 / 2$ is such a rational number.
+            Thus the given formula is invalid.
+            In fact, it is unsatifaible because no interpretation satisfies the formula.
+    \end{enumerate}
+\end{exer}
