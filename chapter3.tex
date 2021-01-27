@@ -262,5 +262,34 @@
             By taking the contrapositive of (\textsf{predicate congruence}) as mentioned on P.89, we obtain that $J \not\models x = \cons(y, z)$.
 
             Therefore, the last line is true, so $I$ is indeed a falsifying $T_{\cons}$-interpretation.
+        \item
+            We claim that $F$ is valid.
+            Suppose otherwise.
+            Let $I$ be a falsifying $T_{\cons}$-interpretation.
+            \begin{enumerate}[label=\arabic*.]
+                \item
+                    $I \not\models \forall *.\, \neg\atom(x) \land \car(x) = y \land \cdr(x) = z \rightarrow x = \cons(y, z)$.
+                \item
+                    $I \models \exists *.\, \neg\atom(x) \land \car(x) = y \land \cdr(x) = z \land \neg(x = \cons(y, z))$.
+                \item
+                    $I_{\textsf{abc}} \models \neg\atom(x) \land \car(x) = y \land \cdr(x) = z \land \neg(x = \cons(y, z))$ for fresh \textsf{a}, \textsf{b}, \textsf{c}.
+                \item
+                    $I_{\textsf{abc}} \models \neg\atom(x)$.
+                \item
+                    $I_{\textsf{abc}} \models \car(x) = y$.
+                \item
+                    $I_{\textsf{abc}} \models \cdr(x) = z$.
+                \item
+                    $I_{\textsf{abc}} \models \neg(x = \cons(y, z))$.
+                \item
+                    $I_{\textsf{abc}} \models \cons(\car(x), \cdr(x)) = \cons(y, z)$. (by 5, 6 and (\textsf{function congruence})
+                \item
+                    $I_{\textsf{abc}} \models \cons(\car(x), \cdr(x)) = x$. (by 4 and (\textsf{construction})
+                \item
+                    $I_{\textsf{abc}} \models x = \cons(y, z)$. (by 8, 9, (\textsf{symmetry}), and \textsf{transitivity})
+                \item
+                    $I_{\textsf{abc}} \models \bot$. (by 7 and 10)
+            \end{enumerate}
+            Every branch of a semantic argument proof closes, so $F$ is valid.
     \end{enumerate}
 \end{exer}
