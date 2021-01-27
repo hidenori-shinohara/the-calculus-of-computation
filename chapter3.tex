@@ -34,7 +34,7 @@
                             $\alpha_I[f](\bullet, \bullet) = \bullet$.
                     \end{itemize}
             \end{itemize}
-            Then $I$ is a $T_{\textsf{E}}$-interpetation for it satisfies all the axioms of $T_{\textsf{E}}$ on P.71.
+            Then $I$ is a $T_{\textsf{E}}$-interpretation for it satisfies all the axioms of $T_{\textsf{E}}$ on P.71.
             For instance, $I$ satisfies reflexivity since
             \begin{align*}
                 &I \models \forall x.\, x = x \\
@@ -247,18 +247,20 @@
             Note that the behavior of $\car$ and $\cdr$ on atoms is undefined as mentioned on P.85, so it is okay to declare it as we did above.
             \begin{align*}
                 & \quad I \not\models \forall x, y, z.\, \car(x) = y \land \cdr(x) = z \rightarrow x = \cons(y, z) \\
-                & \text{iff}\quad I \models \exists x, y, z.\, \car(x) = y \land \cdr(x) = z \land x = \cons(y, z) \\
-                & \text{iff}\quad J \models \car(x) = y \land \cdr(x) = z \land x = \cons(y, z) \\
-                & \text{iff}\quad J \models \car(x) = y \text{ and } J \models \cdr(x) = z \text{ and } J \models x = \cons(y, z) \\
+                & \text{iff}\quad I \models \exists x, y, z.\, \car(x) = y \land \cdr(x) = z \land \neg(x = \cons(y, z)) \\
+                & \text{iff}\quad J \models \car(x) = y \land \cdr(x) = z \land \neg(x = \cons(y, z)) \\
+                & \text{iff}\quad J \models \car(x) = y \text{ and } J \models \cdr(x) = z \text{ and } J \not\models x = \cons(y, z) \\
                 & \text{iff}\quad \alpha_J[\car](\bullet) = \bullet \text{ and }
                                   \alpha_J[\cdr](\bullet) = \bullet \text{ and }
-                                  \bullet = \alpha_J[\cons](\bullet, \bullet) \\
-                & \text{iff}\quad \bullet = \alpha_J[\cons](\bullet, \bullet)
+                                  J \not\models x = \cons(y, z) \\
+                & \text{iff}\quad J \not\models x = \cons(y, z)
             \end{align*}
             where $J: I \vartriangleleft \{ x \mapsto \bullet, y \mapsto \bullet, z \mapsto \bullet \}$.
-            If $\bullet = \alpha_J[\cons](\bullet, \bullet)$, then $(\textsf{construction})$ states $\atom(\bullet) \leftrightarrow \atom(\alpha_J[\cons](\bullet, \bullet))$ which is false by the axiom ($\atom$).
-            \todo[inline,caption={}]{
-                I don't like that I used proof by contradiction like this.
-            }
+
+            From the definition of $I$ and the axiom ($\atom$), we know that $J \models \atom(x)$ and $J \not\models \atom(\cons(y, z))$.
+            Thus $J \not\models \atom(x) \leftrightarrow \atom(\cons(y, z))$.
+            By taking the contrapositive of (\textsf{predicate congruence}) as mentioned on P.89, we obtain that $J \not\models x = \cons(y, z)$.
+
+            Therefore, the last line is true, so $I$ is indeed a falsifying $T_{\cons}$-interpretation.
     \end{enumerate}
 \end{exer}
