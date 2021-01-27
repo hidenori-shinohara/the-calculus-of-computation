@@ -309,5 +309,24 @@
             \end{align*}
             The last statement is true when we set $\textsf{v} = 0$ and $\textsf{w} = 1$, for instance.
             Note that since the cardinality of $D_I$ is 0, any \textsf{read} operation returns $\bullet$, and every constant is mapped to $\bullet$.
+        \item
+            Let $I = (\alpha_I, D_I)$ be a $T_{\textsf{A}}$-interpretation such that
+            \begin{itemize}
+                \item
+                    $D_I = \{ 0, 1 \}$.
+                \item
+                    $\alpha_I[a][k] = k$ for each $k = 0, 1$.
+                \item
+                    $\alpha_I[e] = 1$.
+            \end{itemize}
+            It is easy to see that such an interpretation exists.
+            We claim that it is a falsifying interpretation.
+            \begin{align*}
+                &\quad I \not\models \forall i, j.\, a\ev{i \vartriangleleft e}[j] = e \rightarrow a[j] = e \\
+                &\text{iff}\quad I \models \exists i, j.\, a\ev{i \vartriangleleft e}[j] = e \land \neg(a[j] = e) \\
+                &\text{iff}\quad \text{For some \textsf{v}, \textsf{w}}, I_{\textsf{vw}} \models a\ev{i \vartriangleleft e}[j] = e \text{ and } I_{\textsf{vw}} \models \neg(a[j] = e) \\
+            \end{align*}
+            If $\textsf{v} = \textsf{w} = 0$, then $\alpha_{I_{\textsf{vw}}}[a]\ev{0 \vartriangleleft 1}[0] = 1$ and $\alpha_{I_{\textsf{vw}}}[a][0] \ne 1$.
+            Thereore, the last line is true, so $I$ is indeed a falsifying interpretation.
     \end{enumerate}
 \end{exer}
