@@ -293,3 +293,21 @@
             Every branch of a semantic argument proof closes, so $F$ is valid.
     \end{enumerate}
 \end{exer}
+
+\begin{exer}[3.4]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            Let $I = (\alpha_I, D_I)$ be a $T_{\textsf{E}}$-interpretation with $D_I = \{ \bullet \}$.
+            It is easy to see such an interpretation exists.
+            We claim that $I$ is a falsifying interpretation.
+            \begin{align*}
+                &\quad I \not\models \forall i, j.\, a\ev{i \vartriangleleft e}[j] = e \rightarrow i = j \\
+                &\text{iff}\quad I \models \exists i, j.\, a\ev{i \vartriangleleft e}[j] = e \land \neg(i = j) \\
+                &\text{iff}\quad \text{There exist \textsf{v}, \textsf{w} such that } I_{\textsf{vw}} \models a\ev{i \vartriangleleft e}[j] = e \land \neg(i = j) \\
+                &\text{iff}\quad \text{There exist \textsf{v}, \textsf{w} such that } I_{\textsf{vw}} \models a\ev{i \vartriangleleft e}[j] = e \text{ and } I_{\textsf{vw}} \models \neg(i = j) \\
+            \end{align*}
+            The last statement is true when we set $\textsf{v} = 0$ and $\textsf{w} = 1$, for instance.
+            Note that since the cardinality of $D_I$ is 0, any \textsf{read} operation returns $\bullet$, and every constant is mapped to $\bullet$.
+    \end{enumerate}
+\end{exer}
