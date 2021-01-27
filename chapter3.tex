@@ -215,7 +215,7 @@
             We claim that any $T_{\mathbb{Q}}$-interpretation is a falsifying interpretation.
             Let $I$ be a $T_{\mathbb{Q}}$-interpretation.
             \begin{align*}
-                & I \not\models \forall x.\, 3x = 2 \rightarrow x \leq 0 \\
+                & \quad I \not\models \forall x.\, 3x = 2 \rightarrow x \leq 0 \\
                 & \text{iff}\quad I \models \exists x.\, 3x = 2 \land \neg(x \leq 0) \\
                 & \text{iff}\quad I \vartriangleleft \{ x \mapsto \textsf{a} \} \models 3x = 2 \land \neg(x \leq 0) \text{ for some $\textsf{a} \in \mathbb{Q}$}\\
                 & \text{iff}\quad \text{There exists a rational number $a$ such that $3a = 2$ and $a \geq 0$}
@@ -223,5 +223,42 @@
             where the last line is clearly true since $3 / 2$ is such a rational number.
             Thus the given formula is invalid.
             In fact, it is unsatisfiable because no interpretation satisfies the formula.
+    \end{enumerate}
+\end{exer}
+
+\begin{exer}[3.4]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            Let $I = (\alpha_I, D_I)$ be an interpretation with
+            \begin{itemize}
+                \item
+                    $D_I = \{ \bullet \}$,
+                \item
+                    $\alpha_I[\atom](\bullet) = \true$,
+                \item
+                    $\alpha_I[\car](\bullet) = \bullet$,
+                \item
+                    $\alpha_I[\cdr](\bullet) = \bullet$,
+                \item
+                    $\alpha_I$ maps $\cons, \car, \cdr$ and $\atom$ so as to satisfy the axioms of $T_{\cons}$.
+            \end{itemize}
+            It is easy to see that this is indeed possible, and also it is clear that $I$ is indeed a $T_{\cons}$-interpretation.
+            Note that the behavior of $\car$ and $\cdr$ on atoms is undefined as mentioned on P.85, so it is okay to declare it as we did above.
+            \begin{align*}
+                & \quad I \not\models \forall x, y, z.\, \car(x) = y \land \cdr(x) = z \rightarrow x = \cons(y, z) \\
+                & \text{iff}\quad I \models \exists x, y, z.\, \car(x) = y \land \cdr(x) = z \land x = \cons(y, z) \\
+                & \text{iff}\quad J \models \car(x) = y \land \cdr(x) = z \land x = \cons(y, z) \\
+                & \text{iff}\quad J \models \car(x) = y \text{ and } J \models \cdr(x) = z \text{ and } J \models x = \cons(y, z) \\
+                & \text{iff}\quad \alpha_J[\car](\bullet) = \bullet \text{ and }
+                                  \alpha_J[\cdr](\bullet) = \bullet \text{ and }
+                                  \bullet = \alpha_J[\cons](\bullet, \bullet) \\
+                & \text{iff}\quad \bullet = \alpha_J[\cons](\bullet, \bullet)
+            \end{align*}
+            where $J: I \vartriangleleft \{ x \mapsto \bullet, y \mapsto \bullet, z \mapsto \bullet \}$.
+            If $\bullet = \alpha_J[\cons](\bullet, \bullet)$, then $(\textsf{construction})$ states $\atom(\bullet) \leftrightarrow \atom(\alpha_J[\cons](\bullet, \bullet))$ which is false by the axiom ($\atom$).
+            \todo[inline,caption={}]{
+                I don't like that I used proof by contradiction like this.
+            }
     \end{enumerate}
 \end{exer}
