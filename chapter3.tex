@@ -352,5 +352,35 @@
                     $I_{\textsf{vw}} \models \bot$. (by 6 and 8)
             \end{enumerate}
             Since every branch closes, the given formula must be valid.
+        \item
+            Suppose that the given formula is invalid.
+            Let $I$ be a falsifying $T_{\textsf{A}}$-interpretation.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models \forall i, j, k.\, a\ev{i \vartriangleleft e}\ev{j \vartriangleleft f}[k] = g \land j \ne k \land i = j \rightarrow a[k] = g$.
+                \item % 2
+                    $I \models \exists i, j, k.\, a\ev{i \vartriangleleft e}\ev{j \vartriangleleft f}[k] = g \land j \ne k \land i = j \land a[k] \ne g$.
+                \item % 3
+                    $I_{\textsf{uvw}} \models a\ev{i \vartriangleleft e}\ev{j \vartriangleleft f}[k] = g \land j \ne k \land i = j \land a[k] \ne g$ for fresh \textsf{u}, \textsf{v}, and \textsf{w}.
+                \item % 4
+                    $I_{\textsf{uvw}} \models a\ev{i \vartriangleleft e}\ev{j \vartriangleleft f}[k] = g$.
+                \item % 5
+                    $I_{\textsf{uvw}} \models j \ne k$.
+                \item % 6
+                    $I_{\textsf{uvw}} \models i = j$.
+                \item % 7
+                    $I_{\textsf{uvw}} \models a[k] \ne g$.
+                \item % 8
+                    $I_{\textsf{uvw}} \models a\ev{i \vartriangleleft e}\ev{j \vartriangleleft f}[k] = a\ev{i \vartriangleleft e}[k]$. (by 5 and \textsf{(read-over-write 2)})
+                \item % 9
+                    $I_{\textsf{uvw}} \models i \ne k$. (by 5, 6 and the contrapositive of \textsf{(transitivity)})
+                \item % 10
+                    $I_{\textsf{uvw}} \models a\ev{i \vartriangleleft e}[k] = a[k]$. (by 9 and \textsf{(read-over-write 2)})
+                \item % 11
+                    $I_{\textsf{uvw}} \models a[k] = g$. (by 4, 8, 10, \textsf{(symmtry)} and \textsf{(transitivity)})
+                \item % 12
+                    $I_{\textsf{uvw}} \models \bot$. (by 7 and 11)
+            \end{enumerate}
+            Therefore, the original formula must be valid.
     \end{enumerate}
 \end{exer}
