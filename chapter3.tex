@@ -328,5 +328,29 @@
             \end{align*}
             If $\textsf{v} = \textsf{w} = 0$, then $\alpha_{I_{\textsf{vw}}}[a]\ev{0 \vartriangleleft 1}[0] = 1$ and $\alpha_{I_{\textsf{vw}}}[a][0] \ne 1$.
             Thereore, the last line is true, so $I$ is indeed a falsifying interpretation.
+        \item
+            Suppose that the formula is invalid.
+            Let $I$ be a falsifying $T_{\textsf{A}}$-interpretation.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models \forall i, j.\, a\ev{i \vartriangleleft e}[j] = e \rightarrow i = j \lor a[j] = e$.
+                \item % 2
+                    $I \models \exists i, j.\, a\ev{i \vartriangleleft e}[j] = e \land i \ne j \land a[j] \ne e$.
+                \item % 3
+                    $I_{\textsf{vw}} \models a\ev{i \vartriangleleft e}[j] = e \land i \ne j \land a[j] \ne e$ for fresh \textsf{v} and \textsf{w}.
+                \item % 4
+                    $I_{\textsf{vw}} \models a\ev{i \vartriangleleft e}[j] = e$.
+                \item % 5
+                    $I_{\textsf{vw}} \models i \ne j$.
+                \item % 6
+                    $I_{\textsf{vw}} \models a[j] \ne e$.
+                \item % 7
+                    $I_{\textsf{vw}} \models a\ev{i \vartriangleleft e}[j] = a[j]$. (by 5 and \textsf{(read-over-write 2)})
+                \item % 8
+                    $I_{\textsf{vw}} \models a[j] = e$. (by 4, 7, \textsf{(symmetry)} and \textsf{(transitivity)})
+                \item %9
+                    $I_{\textsf{vw}} \models \bot$. (by 6 and 8)
+            \end{enumerate}
+            Since every branch closes, the given formula must be valid.
     \end{enumerate}
 \end{exer}
