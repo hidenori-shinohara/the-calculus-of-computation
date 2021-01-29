@@ -1,4 +1,3 @@
-
 \begin{exer}[1.1]
     $ $
     \begin{enumerate}[label=(\alph*)]
@@ -110,7 +109,7 @@
                 \item % 3b
                     $I \not\models \top$ (by 2b and semantics of $\neg$)
                 \item % 4b
-                    $I \models \top$ (Under any interpretation, $\top$ has value true)
+                    $I \models \top$ (Under any interpretation, $\top$ has value $\true$)
                 \item % 5b
                     $I \models \bot$ (3b and 4b are contradictory)
             \end{enumerate}
@@ -174,7 +173,21 @@
             \end{center}
         \item
             $F_1 \lor F_2 \Leftrightarrow (F_1 \nand F_1) \nand (F_2 \nand F_2)$.
-            This can be shown easily using the truth table with $2^2 = 4$ rows.
+            \begin{center}
+                \begin{tabular}{ |c|c|c|c||c| }
+                    \hline
+                    $F_1$ & $F_2$ & $F_1 \nand F_1$ & $F_2 \nand F_2$ & $(F_1 \nand F_1) \nand (F_2 \nand F_2)$\\
+                    \hline
+                    0 & 0 & 1 & 1 & 0 \\
+                    \hline
+                    1 & 0 & 0 & 1 & 1 \\
+                    \hline
+                    0 & 1 & 1 & 0 & 1 \\
+                    \hline
+                    1 & 1 & 0 & 0 & 1 \\
+                    \hline
+                \end{tabular}
+            \end{center}
     \end{itemize}
 \end{exer}
 
