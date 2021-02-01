@@ -1,0 +1,30 @@
+\begin{exer}[4.1]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            \todo[inline,caption={}]{
+                Figure out how to work with two variables.
+            }
+        \item
+            Let $F[u]: \flatlist(u) \rightarrow \flatlist(\revlist(u))$.
+            We will show that $F[u]$ is true for any $u$ by stepwise induction on $u$.
+            For the base case, we consider arbitrary $\atom u$ and prove $F[u]$.
+            This is trivial by \textsf{(reverse atom)} and \textsf{(flat atom)}.
+            Assume as the inductive hypothesis that for arbtrary list $v$, $F[v]$ is true.
+            We want to prove that, for arbitrary list $u$, $F[\cons(u, v)]$.
+            Suppose that $\atom u$
+            \begin{align*}
+                \flatlist(\cons(u, v))
+                    &\leftrightarrow \atom(u) \land \flatlist(v) & \textsf{(flat list)}\\
+                    &\rightarrow \atom(u) \land \flatlist(\revlist(v)) & \text{(inductive hypothesis)}\\
+                    &\leftrightarrow \flatlist(\cons(u, \revlist(v))) & \textsf{(flat list)} \\
+                    &= \flatlist(\concat(u, \revlist(v))) & \textsf{(concat atom)} \\
+                    &= \flatlist(\concat(\revlist(u), \revlist(v))) & \textsf{(reverse atom)} \\
+                    &= \flatlist(\revlist(\concat(u, v))) & \textsf{(reverse list)} \\
+            \end{align*}
+            Thus $\flatlist(\cons(u, v)) \rightarrow \flatlist(\revlist(\concat(u, v)))$.
+            Suppose that $\neg\atom u$.
+            Then $\flatlist(\cons(u, v)) \leftrightarrow \atom(u) \land \flatlist(v)$ by $\textsf{(flat list)}$, but $\atom(u)$ is false, so we are done.
+            Thus we have shown that $F[u]$ is true for any arbitrary $u$.
+    \end{enumerate}
+\end{exer}
