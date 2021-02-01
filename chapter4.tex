@@ -24,7 +24,11 @@
             \end{align*}
             Thus $\flatlist(\cons(u, v)) \rightarrow \flatlist(\revlist(\concat(u, v)))$.
             Suppose that $\neg\atom u$.
-            Then $\flatlist(\cons(u, v)) \leftrightarrow \atom(u) \land \flatlist(v)$ by $\textsf{(flat list)}$, but $\atom(u)$ is false, so we are done.
+            Then
+            \begin{align*}
+                \flatlist(\cons(u, v)) \leftrightarrow \atom(u) \land \flatlist(v)
+            \end{align*}
+            by $\textsf{(flat list)}$, but $\atom(u)$ is false, so we are done.
             Thus we have shown that $F[u]$ is true for any arbitrary $u$.
     \end{enumerate}
 \end{exer}
