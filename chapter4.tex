@@ -3,8 +3,58 @@
     \begin{enumerate}[label=(\alph*)]
         \item
             \todo[inline,caption={}]{
-                Figure out how to work with two variables.
+                Proofread!
             }
+            This proof is rather complicated since we use stepwise induction inside another stepwise induction proof.
+            Let $G_u[v]$ be defined to be the formula $\flatlist(u) \land \flatlist(v) \rightarrow \flatlist(\concat(u, v))$.
+            Let $F[u]$ be defined to be the formula $\forall v.\, G_u[v]$.
+            We prove by stepwise induction on $u$ that $F[u]$.
+
+            \begin{itemize}
+                \item
+                    For the base case, we consider arbitrary $\atom u$ and prove $F[u]$.
+                    In other words, we want to show that $\forall v.\, G_u[v]$.
+                    \begin{itemize}
+                        \item
+                            For the base case, we consider arbitrary $\atom v$ and prove $G_u[v]$.
+                            In other words, we want to prove $\flatlist(u) \land \flatlist(v) \rightarrow \flatlist(\concat(u, v))$.
+                            Since $\atom u$ and $\atom v$, $\flatlist(\concat(u, v)) = \flatlist(\cons(u, v)) \leftrightarrow \atom(u) \land \flatlist(v) = \true$ by \textsf{(concat atom)}, \textsf{(flat atom)}, \textsf{(flat list)}.
+                        \item
+                            Assume as the inductive hypothesis that for arbitrary list $y$, $G_u[y]$.
+                            Let $x$ be given.
+                            We want to show that $G_u[\cons(x, y)]$.
+                            In other words, we want to show that $\flatlist(u) \land \flatlist(\cons(x, y)) \rightarrow \flatlist(\concat(u, \cons(x, y)))$.
+                            \begin{align*}
+                                &\flatlist(u) \land \flatlist(\cons(x, y)) \\
+                                &\quad\leftrightarrow \atom(u) \land \flatlist(\cons(x, y)) & (\atom(u)) \\
+                                &\quad\leftrightarrow \flatlist(\cons(u, \cons(x, y))) & \textsf{(flat list)} \\
+                                &\quad\leftrightarrow \flatlist(\concat(u, \cons(x, y))) & \textsf{(concat atom)} \\
+                            \end{align*}
+                            Therefore, the inductive step has been shown.
+                    \end{itemize}
+                    By stepwise induction, we have shown that $\forall v.\, G_u[v]$.
+                \item
+                    Assume as the inductive hypothesis that $F[y]$ for arbitrary $y$.
+                    In other words, we are assuming that $\forall v.\, G_y[v]$, which is equivalent to $\forall v.\, \flatlist(y) \land \flatlist(v) \rightarrow \flatlist(\concat(y, v))$.
+                    Let $x$ be given.
+                    We want to show that $F[\cons(x, y)]$.
+                    In other words, $\forall v.\, G_{\cons(x, y)}[v]$, which is equivalent to $\forall v.\, \flatlist(\cons(x, y)) \land \flatlist(v) \rightarrow \flatlist(\concat(\cons(x, y), v))$.
+                    We will first examine the hypothesis:
+                    \begin{align*}
+                        & \flatlist(\cons(x, y)) \land \flatlist(v) \\
+                        & \leftrightarrow \atom x \land \flatlist(y) \land \flatlist(v) & \textsf{(flat list)} \\
+                    \end{align*}
+                    Therefore, if $\neg\atom x$, we are done.
+                    Suppose $\atom x$.
+                    \begin{align*}
+                        & \atom x \land \flatlist(y) \land \flatlist(v) \\
+                        & \leftrightarrow \flatlist(y) \land \flatlist(v) \\
+                        & \rightarrow \flatlist(\concat(y, v)) & \text{(inductive hypothesis)} \\
+                        & \leftrightarrow \flatlist(\cons(x, \concat(y, v))) & \textsf{(flat list)} \\
+                        & = \flatlist(\concat(\cons(x, y), v)) & \textsf{(concat list)} \\
+                    \end{align*}
+            \end{itemize}
+            Therefore, we have shown that $\forall u.\, F[u]$.
         \item
             Let $F[u]: \flatlist(u) \rightarrow \flatlist(\revlist(u))$.
             We will show that $F[u]$ is true for any $u$ by stepwise induction on $u$.
