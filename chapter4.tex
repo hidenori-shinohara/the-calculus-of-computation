@@ -82,3 +82,23 @@
             Thus we have shown that $F[u]$ is true for any arbitrary $u$.
     \end{enumerate}
 \end{exer}
+
+\begin{exer}[4.2]
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            We will apply the stepwise induction principle for lists.
+            Let $F[u] = u \lessc u$.
+            It suffices to show that
+            \begin{itemize}
+                \item
+                    $\forall \atom u.\, F[u]$, and
+                \item
+                    $\forall u, v.\, F[v] \rightarrow F[\cons(u, v)]$.
+            \end{itemize}
+            The base case is a direct consequence of \textsf{($\lessc$ (1))}.
+            $F[\cons(u, v)]$ is equivalent to $\cons(u, v) \lessc \cons(u, v)$, which is equivalent to $(u = u \land v \lessc v) \lor \cons(u, v) \leq v$.
+            Since we have $v \lessc v$ by the inductive hypothesis, we are done with the inductive step.
+            THerefore, $F[u]$ is true for any $u$ by the stepwise induction principle.
+    \end{enumerate}
+\end{exer}
