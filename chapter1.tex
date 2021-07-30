@@ -77,6 +77,19 @@
                     &\text{iff}\quad I[R] = \textsf{true}.
             \end{align*}
             Therefore, $I$ is indeed a falsifying interpretation of the given formula.
+        \item
+            We claim that the interpretation $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{true}, R \mapsto \textsf{false} \}$ is a falsifying interpretation.
+            We will use the inductive definition on P.7 and P.8.
+            \begin{align*}
+                &I \not\models (P \rightarrow Q \lor R) \rightarrow P \rightarrow R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \lor R \text{ and } I \not\models P \rightarrow R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \lor R \text{ and } I \models P \text{ and } I \not\models R \\
+                    &\text{iff}\quad I \models P \rightarrow Q \lor R \\
+                    &\text{iff}\quad \text{ if } I \models P \text{ then } I \models Q \lor R \\
+                    &\text{iff}\quad \text{ if } I \models P \text{ then } (I \models Q \text{ or } I \models R)
+            \end{align*}
+            where the last statement is true since $I \models Q$.
+            Therefore, $I$ is indeed a falsifying interpretation of the given formula.
     \end{enumerate}
 \end{exer}
 
