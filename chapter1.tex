@@ -107,6 +107,19 @@
                     $I \models R$.
             \end{enumerate}
             4 and 6 lead to a contradiction.
+        \item
+            By the relative precedence of the logical connectives on P.5, we have $(P \land Q) \lor \neg P \lor (\neg Q \rightarrow \neg P)$.
+            We claim that $I: \{ P \mapsto \textsf{true}, Q \mapsto \textsf{false} \}$ is a falsifying interpretation.
+            We will use the inductive definition on P.7 and P.8.
+            \begin{align*}
+                &I \not\models (P \land Q) \lor \neg P \lor (\neg Q \rightarrow \neg P) \\
+                    &\text{iff}\quad I \not\models P \land Q \text{ and } I \not\models \neg P \text{ and } I \not\models \neg Q \rightarrow \neg P \\
+                    &\text{iff}\quad I \not\models P \land Q \text{ and } I \models P \text{ and } I \models \neg Q \text{ and } I \not\models\neg P \\
+                    &\text{iff}\quad I \not\models P \land Q
+            \end{align*}
+            We know that $I \not\models P \land Q$ by $I \not\models Q$ and the semantics of $\land$.
+            (See Example 1.4)
+            Therefore, $I$ is indeed a falsifying interpretation, and thus the given formula is invalid.
     \end{enumerate}
 \end{exer}
 
