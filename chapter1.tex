@@ -90,6 +90,23 @@
             \end{align*}
             where the last statement is true since $I \models Q$.
             Therefore, $I$ is indeed a falsifying interpretation of the given formula.
+        \item
+            Assume that there is a falsifying interpretation $I$.
+            \begin{enumerate}[label=\arabic*.]
+                \item % 1
+                    $I \not\models \neg(P \land Q) \rightarrow R \rightarrow \neg R \rightarrow Q$.
+                \item % 2
+                    $I \models P \land Q$.
+                \item % 3
+                    $I \models R \rightarrow \neg R \rightarrow Q$.
+                \item % 4
+                    $I \models R$.
+                \item % 5
+                    $I \not\models \neg R \rightarrow Q$.
+                \item % 6
+                    $I \models R$.
+            \end{enumerate}
+            4 and 6 lead to a contradiction.
     \end{enumerate}
 \end{exer}
 
