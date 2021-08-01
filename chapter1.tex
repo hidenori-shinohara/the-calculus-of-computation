@@ -198,6 +198,33 @@
                         1 & 1 & 1 & 1 & 1 \\ \hline
                 \end{tabular}
             \end{center}
+            \addtocounter{enumi}{4} % Skip to (x)
+        \item
+            We will use the truth table to prove the given template equivalence $F$.
+            \begin{center}
+                \begin{tabular}{ |c|c|c||c|c|c|c|c|c| }
+                    \hline
+                        $F_1$ & $F_2$ & $F_3$ & $F_1 \rightarrow F_2$ & $F_1 \rightarrow F_3$ & $(F_1 \rightarrow F_2) \land (F_1 \rightarrow F_3)$ &
+                                $F_2 \land F_3$ & $F_1 \rightarrow F_2 \land F_3$ & $F$ \\
+                    \hline
+                        0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1  \\
+                    \hline
+                        0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 1  \\
+                    \hline
+                        0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1  \\
+                    \hline
+                        0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1  \\
+                    \hline
+                        1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1  \\
+                    \hline
+                        1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1  \\
+                    \hline
+                        1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1  \\
+                    \hline
+                        1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1  \\
+                    \hline
+                \end{tabular}
+            \end{center}
     \end{enumerate}
 \end{exer}
 
