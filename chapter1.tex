@@ -185,6 +185,19 @@
                     $I \models \bot$ (by 3b and 4b)
             \end{enumerate}
             Both of these two branches are closed; $F$ is valid.
+            \addtocounter{enumi}{16} % Skip to (s)
+        \item
+            We will use the truth table to prove the given template equivalence $F$.
+            \begin{center}
+                \begin{tabular}{ |c|c||c|c|c| }
+                    \hline
+                        $F_1$ & $F_2$ & $F_1 \rightarrow F_2$ & $\neg F_2 \rightarrow \neg F_1$ & $F$ \\ \hline
+                        0 & 0 & 1 & 1 & 1 \\ \hline
+                        0 & 1 & 1 & 1 & 1 \\ \hline
+                        1 & 0 & 0 & 0 & 1 \\ \hline
+                        1 & 1 & 1 & 1 & 1 \\ \hline
+                \end{tabular}
+            \end{center}
     \end{enumerate}
 \end{exer}
 
