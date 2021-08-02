@@ -262,6 +262,36 @@
         \item
             $\bot$ is equivalent to $\neg \top$.
             In other words, $\bot \Leftrightarrow \neg \top$ and that is proved in Exercise 1.2(b).
+        \item
+            Let $F: (F_1 \lor F_2) \leftrightarrow \neg(\neg F_1 \land \neg F_2)$.
+            We will use a truth table to show $F$ is valid.
+            \begin{center}
+                \begin{tabular}{ |c|c||c|c|c| }
+                    \hline
+                        $F_1$ & $F_2$ & $F_1 \lor F_2$ & $\neg(\neg F_1 \land \neg F_2)$ & $F$ \\ \hline
+                        0 & 0 & 0 & 0 & 1 \\ \hline
+                        0 & 1 & 1 & 1 & 1 \\ \hline
+                        1 & 0 & 1 & 1 & 1 \\ \hline
+                        1 & 1 & 1 & 1 & 1 \\ \hline
+                \end{tabular}
+            \end{center}
+        \item
+            $F_1 \rightarrow F_2 \Leftrightarrow \neg F_1 \lor F_2$ by 1.2(r).
+            And we showed $\lor$ can be expressed using $\neg$ and $\land$ above.
+        \item
+            Let $F: (F_1 \leftrightarrow F_2) \leftrightarrow ((F_1 \rightarrow F_2) \land (F_2 \rightarrow F_1))$.
+            We will use a truth table to show $F$ is valid.
+            \begin{center}
+                \begin{tabular}{ |c|c||c|c|c| }
+                    \hline
+                        $F_1$ & $F_2$ & $F_1 \leftrightarrow F_2$ & $((F_1 \rightarrow F_2) \land (F_2 \rightarrow F_1))$ & $F$ \\ \hline
+                        0 & 0 & 1 & 1 & 1 \\ \hline
+                        0 & 1 & 0 & 0 & 1 \\ \hline
+                        1 & 0 & 0 & 0 & 1 \\ \hline
+                        1 & 1 & 1 & 1 & 1 \\ \hline
+                \end{tabular}
+            \end{center}
+            Morever, we have shown that $\rightarrow$ can be expressed using $\neg$ and $\lor$, and $\lor$ can be expressed using $\neg$ and $\land$.
     \end{itemize}
 \end{exer}
 
