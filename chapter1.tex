@@ -200,6 +200,18 @@
                 \end{tabular}
             \end{center}
         \item % (r)
+            Let $F: (F_1 \rightarrow F_2) \leftrightarrow (\neg F_1 \lor F_2)$.
+            We will use a truth table to show $F$ is valid.
+            \begin{center}
+                \begin{tabular}{ |c|c||c|c|c| }
+                    \hline
+                        $F_1$ & $F_2$ & $F_1 \rightarrow F_2$ & $\neg F_1 \lor F_2$ & $F$ \\ \hline
+                        0 & 0 & 1 & 1 & 1 \\ \hline
+                        0 & 1 & 1 & 1 & 1 \\ \hline
+                        1 & 0 & 0 & 0 & 1 \\ \hline
+                        1 & 1 & 1 & 1 & 1 \\ \hline
+                \end{tabular}
+            \end{center}
         \item % (s)
             Let $F: (F_1 \rightarrow F_2) \leftrightarrow (\neg F_2 \rightarrow \neg F_1)$.
             We will use a truth table to show $F$ is valid.
