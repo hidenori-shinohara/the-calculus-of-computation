@@ -187,6 +187,18 @@
             Both of these two branches are closed; $F$ is valid.
             \addtocounter{enumi}{14} % Skip to (s)
         \item % (q)
+            Let $F: \neg(F_1 \lor F_2) \leftrightarrow (\neg F_1 \land \neg F_2)$.
+            We will use a truth table to show $F$ is valid.
+            \begin{center}
+                \begin{tabular}{ |c|c||c|c|c|c|c|c| }
+                    \hline
+                        $F_1$ & $F_2$ & $F_1 \lor F_2$ & $\neg(F_1 \lor F_2)$ & $\neg F_1$ & $\neg F_2$ & $\neg F_1 \land \neg F_2$ & $F$ \\ \hline
+                        0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\ \hline
+                        0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 \\ \hline
+                        1 & 0 & 1 & 0 & 0 & 1 & 0 & 1 \\ \hline
+                        1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\ \hline
+                \end{tabular}
+            \end{center}
         \item % (r)
         \item % (s)
             Let $F: (F_1 \rightarrow F_2) \leftrightarrow (\neg F_2 \rightarrow \neg F_1)$.
