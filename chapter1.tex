@@ -367,6 +367,24 @@
                     $F_4: (\neg Q \land P) \lor (\neg Q \land R) \lor (\neg R \land P) \lor (\neg R \land R) \lor (P \land P) \lor (P \land R) \lor (\neg Q \land P) \lor (\neg Q \land R)$.
             \end{itemize}
             $F_2$ is in NNF and CNF, and $F_4$ is in DNF.
+        \item
+            $ $
+            \begin{itemize}
+                \item
+                    $F: \neg(Q \rightarrow R) \land P \land (Q \lor \neg(P \land R))$.
+                \item
+                    $F_1: \neg(\neg Q \lor R) \land P \land (Q \lor \neg(P \land R))$.
+                \item
+                    $F_2: \neg(\neg Q) \land \neg R \land P \land (Q \lor \neg(P \land R))$.
+                \item
+                    $F_3: Q \land \neg R \land P \land (Q \lor \neg(P \land R))$.
+                \item
+                    $F_4: Q \land \neg R \land P \land (Q \lor \neg P \lor \neg R)$.
+            \end{itemize}
+            All the connectives of $F_4$ are $\neg$, $\land$, or $|lor$, and the negations only appear in literals.
+            Furthermore, $F_4$ is a conjunction of disjunction of literals.
+            Therefore, $F_4$ is the NNF and CNF of $F$.
+            Finally, $F_5: (Q \land \neg R \land P \land Q) \lor (Q \land \neg R \land P \land \neg P) \lor (Q \land \neg R \land P \land \neg R)$ is in DNF.
     \end{enumerate}
 \end{exer}
 
