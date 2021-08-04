@@ -295,6 +295,19 @@
                 \item
                     $\exists z.\, \exists x.\, \forall y.\, \forall w.\, \neg p(x, y) \lor p(w, z)$.
             \end{itemize}
+        \item % c
+            \begin{itemize}
+                \item
+                    $\forall w.\, \neg (\exists x, y.\, \forall z.\, p(x, z) \rightarrow q(y, z)) \land \exists z.\, p(w, z)$
+                \item
+                    $\forall w.\, (\forall x, y.\, \exists z.\, p(x, z) \land \neg q(y, z)) \land \exists z.\, p(w, z)$
+                \item
+                    $\forall w.\, (\forall x, y.\, \exists z.\, p(x, z) \land \neg q(y, z)) \land \exists u.\, p(w, u)$
+                \item
+                    $p(x, z) \land \neg q(y, z) \land p(w, u)$
+                \item
+                    $\forall w, x, y.\, \exists z, u.\, p(x, z) \land \neg q(y, z) \land p(w, u)$
+            \end{itemize}
     \end{enumerate}
 \end{exer}
 
